@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- === Fonts (Barlow Condensed and Roboto Mono) === -->
+    <link rel="preconnect" href="https://fonts.goog<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- === Favicon === -->
+    <link rel="icon" href="favicon-32x32.png" type="image/png">
+
+    <!-- === CSS === -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Space Tourism</title>
+  </head>
+  <body>
+    <header class="page-header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><g fill="none" fill-rule="evenodd"><circle cx="24" cy="24" r="24" fill="#FFF"/><path fill="#0B0D17" d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"/></g></svg>
+
+      <nav class="page-header__navigation">
+        <ol data-js="navigation-list" class="page-header__list">
+          <li>
+            <button class="page-header__option page-header__option--active">
+              <span class="page-header__option__number" aria-hidden="true">00</span> home
+            </button>
+          </li>
+          <li> 
+            <button class="page-header__option">
+              <span class="page-header__option__number" aria-hidden="true">01</span> destination
+            </button>
+          </li>
+          <li>
+            <button class="page-header__option">
+              <span class="page-header__option__number" aria-hidden="true">02</span> crew
+            </button>
+          </li>
+          <li>
+            <button class="page-header__option">
+              <span class="page-header__option__number" aria-hidden="true">04</span> technology
+            </button>
+          </li>
+        </ol>
+      </nav>
+    </header>
+
+    <main>
+      <section class="home-section" aria-labelledby="so-you-want-travel">
+        <div class="home-section__flex">
+          <div>
+            <h1 class="home-section__title" id="so-you-want-travel">
+              <span class="home-section__title__small">so, you want travel to</span>
+              <strong class="home-section__title__big">space</strong>
+            </h1>
+            
+            <p class="home-section__text">
+              Let’s face it; if you want to go to space, you might as well genuinely go to
+              outer space and not hover kind of on the edge of it. Well sit back, and relax
+              because we’ll give you a truly out of this world experience!
+            </p>
+          </div>
+
+          <button data-js="explore-button" class="home-section__explore-button">
+            explore
+          </button>
+        </div>
+      </section>
+
+      <section class="destination-section">
+
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
