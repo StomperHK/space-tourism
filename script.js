@@ -35,18 +35,20 @@ function resetAnimation(value) {
   setTimeout(() => value.classList.add('is-animating'), 50)
 }
 
+function removeAndAddIsActiveClass(sectionToGoIndex) {
+  destinationSectionDestineELs[destinationSectionCarouselIndex].classList.remove('is-active')
+  destinationSectionImagesELs[destinationSectionCarouselIndex].classList.remove('is-active')
+
+  destinationSectionDestineELs[sectionToGoIndex].classList.add('is-active')
+  destinationSectionImagesELs[sectionToGoIndex].classList.add('is-active')
+
+  destinationSectionCarouselIndex = sectionToGoIndex
+}
+
 function moveCarousel(sectionToGoIndex) {
   animationWrappersELs.forEach(resetAnimation)
 
-  setTimeout(() => {
-    destinationSectionDestineELs[destinationSectionCarouselIndex].classList.remove('is-active')
-    destinationSectionImagesELs[destinationSectionCarouselIndex].classList.remove('is-active')
-
-    destinationSectionDestineELs[sectionToGoIndex].classList.add('is-active')
-    destinationSectionImagesELs[sectionToGoIndex].classList.add('is-active')
-
-    destinationSectionCarouselIndex = sectionToGoIndex
-  }, 225)
+  setTimeout(() => removeAndAddIsActiveClass(sectionToGoIndex), 210)
 
   changeUnderlinedOption(sectionToGoIndex, destinationSectionOptiosELs)
 }
