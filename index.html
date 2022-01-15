@@ -23,25 +23,25 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><g fill="none" fill-rule="evenodd"><circle cx="24" cy="24" r="24" fill="#FFF"/><path fill="#0B0D17" d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"/></g></svg>
 
       <nav class="page-header__navigation">
-        <ol data-js="navigation-list" class="page-header__list">
+        <ol data-js="page-header__list" class="page-header__list">
           <li>
-            <button class="page-header__option page-header__option--active">
-              <span class="page-header__option__number" aria-hidden="true">00</span> home
+            <button class="option-button option-button--active">
+              <span class="page-header__number" aria-hidden="true">00</span> home
             </button>
           </li>
           <li> 
-            <button class="page-header__option">
-              <span class="page-header__option__number" aria-hidden="true">01</span> destination
+            <button class="option-button">
+              <span class="page-header__number" aria-hidden="true">01</span> destination
             </button>
           </li>
           <li>
-            <button class="page-header__option">
-              <span class="page-header__option__number" aria-hidden="true">02</span> crew
+            <button class="option-button">
+              <span class="page-header__number" aria-hidden="true">02</span> crew
             </button>
           </li>
           <li>
-            <button class="page-header__option">
-              <span class="page-header__option__number" aria-hidden="true">04</span> technology
+            <button class="option-button">
+              <span class="page-header__number" aria-hidden="true">04</span> technology
             </button>
           </li>
         </ol>
@@ -70,8 +70,121 @@
         </div>
       </section>
 
-      <section class="destination-section">
+      <section class="destination-section" aria-labelledby="pick-your-destination">
+        <div class="destination-section__flex">
+          <div>
+            <h2 class="destination-section__title" id="pick-your-destination">
+              <span class="destination-section__title__number" aria-hidden="true">01</span> pick your destination
+            </h2>
+            <div data-js="animation-wrapper">
+              <img data-js="destination-section__image" class="destination-section__image is-active"
+                src="./src/destination/image-moon.png" alt="moon's image"
+              >
+              <img data-js="destination-section__image" class="destination-section__image"
+                src="./src/destination/image-mars.png" alt="mar's image"
+              >
+              <img data-js="destination-section__image" class="destination-section__image"
+                src="./src/destination/image-europa.png" alt="europa's image"
+              >
+              <img data-js="destination-section__image" class="destination-section__image"
+                src="./src/destination/image-titan.png" alt="titan's image"
+              >
+            </div>
+          </div>
 
+          <div>
+            <ul class="destination-section__list">
+              <li>
+                <button data-js="destination-section__list__button" class="destination-section__list__button option-button option-button--active">moon</button>
+              </li>
+              <li>
+                <button data-js="destination-section__list__button" class="destination-section__list__button option-button">mars</button>
+              </li>
+              <li>
+                <button data-js="destination-section__list__button" class="destination-section__list__button option-button">europa</button>
+              </li>
+              <li>
+                <button data-js="destination-section__list__button" class="destination-section__list__button option-button">titan</button>
+              </li>
+            </ul>
+
+            <div data-js="animation-wrapper">
+              <section data-js="destination-section__destine" class="destination-section__destine is-active">
+                <h3>moon</h3>
+                <p class="destination-section__text">
+                  See our planet as you’ve never seen it before. A perfect relaxing trip away to help
+                  regain perspective and come back refreshed. While you’re there, take in some history
+                  by visiting the Luna 2 and Apollo 11 landing sites.
+                </p>
+                <dl class="destination-section__definitions">
+                  <div>
+                    <dt>Avg. distance</dt>
+                    <dd>384,400 km</dd>
+                  </div>
+                  <div>
+                    <dt>Est. travel time</dt>
+                    <dd>3 days</dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section data-js="destination-section__destine" class="destination-section__destine is-disabled">
+                <h3>mars</h3>
+                <p class="destination-section__text">
+                  Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons,
+                  the tallest planetary mountain in our solar system. It’s two and a half times
+                  the size of Everest!
+                </p>
+                <dl class="destination-section__definitions">
+                  <div>
+                    <dt>Avg. distance</dt>
+                    <dd>225 mil. km</dd>
+                  </div>
+                  <div>
+                    <dt>Est. travel time</dt>
+                    <dd>9 months</dd>
+                  </div>
+              </section>
+
+              <section data-js="destination-section__destine" class="destination-section__destine is-disabled">
+                <h3>europa</h3>
+                <p class="destination-section__text">
+                  The smallest of the four Galilean moons orbiting Jupiter, Europa is a
+                  winter lover’s dream. With an icy surface, it’s perfect for a bit of
+                  ice skating, curling, hockey, or simple relaxation in your snug
+                  wintery cabin.
+                </p>
+                <dl class="destination-section__definitions">
+                  <div>
+                    <dt>Avg. distance</dt>
+                    <dd>628 mil. km</dd>
+                  </div>
+                  <div>
+                    <dt>Est. travel time</dt>
+                    <dd>3 years</dd>
+                  </div>
+              </section>
+              
+              <section data-js="destination-section__destine" class="destination-section__destine is-disabled">
+                <h3>titan</h3>
+                <p class="destination-section__text">
+                  The only moon known to have a dense atmosphere other than Earth, Titan
+                  is a home away from home (just a few hundred degrees colder!). As a
+                  bonus, you get striking views of the Rings of Saturn.
+                </p>
+                <dl class="destination-section__definitions">
+                  <div>
+                    <dt>Avg. distance</dt>
+                    <dd>1.6 bil. km</dd>
+                  </div>
+                  <div>
+                    <dt>Est. travel time</dt>
+                    <dd>7 years</dd>
+                  </div>
+              </section>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
