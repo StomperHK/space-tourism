@@ -13,10 +13,11 @@
   --lightblue-color: rgb(208, 214, 249);
   --lightblue-color-small-opacity: rgba(208, 214, 249, 0.15);
   --white-color: rgb(255, 255, 255);
+  --gray-color: gray;
   --gray-color-small-opacity: rgba(170, 168, 168, 0.1);
   --gray-color-line: rgba(182, 182, 182, 0.5);
   --gray-color-border: rgba(182, 182, 182, 0.3);
-  --gray-color-number: gray; 
+  --gray-color-button: rgba(128, 128, 128, 0.5);
 }
 
 
@@ -40,6 +41,11 @@ h3, h4 {
 }
 
 h2 {
+  position: absolute;
+  top: 130px;
+
+  white-space: nowrap;
+  
   font-size: 30px;
   font-weight: 300;
 
@@ -49,9 +55,9 @@ h2 {
 h3 {
   margin: 16px 0px;
 
-  font-size: 100px;
+  font-size: 46px;
 
-  letter-spacing: 10px;
+  letter-spacing: 6px;
 }
 
 h4 {
@@ -65,7 +71,7 @@ h5 {
 }
 
 p {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 300;
 }
 
@@ -257,7 +263,7 @@ main > section {
   }
 
   &__text {
-    width: 450px;
+    max-width: 450px;
 
     color: var(--lightblue-color);
 
@@ -305,20 +311,13 @@ main > section {
   &__flex {
     display: flex;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: flex-start;
 
     width: 100%;
   }
-
-  &__title {
-    position: absolute;
-    top: 130px;
-
-    white-space: nowrap;
-
-    &__number {
-      color: var(--gray-color-number)
-    }
+  
+  &__title__number {
+    color: var(--gray-color)
   }
 
   &__image {
@@ -327,22 +326,13 @@ main > section {
     width: 25vw;
 
     transition: transform 150ms ease-out;
-
-    @media (hover: hover) {
-      &:hover {
-        transform: translateY(-30px)
-      }
-    }
-
-    @media (hover: none) {
-      &:active {
-        transform: translateY(-30px)
-      }
-    }
   }
 
   &__list {
     display: flex;
+
+    position: absolute;
+    top: 32vh;
 
     list-style: none;
 
@@ -363,7 +353,7 @@ main > section {
 
   &__destine {
     display: none;
-    width: 35vw;
+    max-width: 35vw;
   }
 
   &__text {
@@ -394,6 +384,94 @@ main > section {
   }
 }
 
+.crew-section {
+  padding: 0px 15vh;
+
+  background-image:
+    radial-gradient(farthest-corner at center center, transparent 50%, black 90%),
+    url('./src/crew/background-crew-desktop.jpg');
+
+  &__title__number {
+    color: var(--gray-color)
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    width: 100%;
+  }
+
+  &__tripulant {
+    display: none;
+  }
+
+  &__role {
+    margin-bottom: 10px;
+
+    color: var(--gray-color);
+
+    font-size: 30px;
+  }
+
+  &__text {
+    margin: 30px 0px 90px;
+    max-width: 40vw;
+
+    color: var(--lightblue-color);
+  }
+
+  &__list {
+    display: flex;
+
+    margin-bottom: 5vh;
+
+    list-style: none;
+
+    li + li {
+      margin-left: 20px;
+    }
+  }
+
+  &__list__button {
+    width: 18px;
+    height: 18px;
+
+    background-color: var(--gray-color-button);
+
+    border-radius: 50%;
+
+    transition: background-color 150ms ease-out;
+
+    &--active {
+      background-color: var(--white-color) !important;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--gray-color);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        background-color: var(--gray-color);
+      }
+    }
+  }
+
+  &__image {
+    display: none;
+    margin-left: 3vw;
+    width: 27vw;
+
+    &--small {
+      width: 23vw;
+    }
+  }
+}
+
 
 @media (pointer: coarse) {
   * {
@@ -415,11 +493,11 @@ main > section {
 }
 
 @keyframes fade-in-and-show {
-  40% {
+  30% {
     opacity: 0
   }
 
-  60% {
+  70% {
     opacity: 0
   }
 
