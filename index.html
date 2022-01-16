@@ -25,23 +25,23 @@
       <nav class="page-header__navigation">
         <ol data-js="page-header__list" class="page-header__list">
           <li>
-            <button class="option-button option-button--active">
-              <span class="page-header__number" aria-hidden="true">00</span> home
+            <button class="page-header__list__button page-header__list__button--active">
+              <span class="page-header__list__number" aria-hidden="true">00</span> home
             </button>
           </li>
           <li> 
-            <button class="option-button">
-              <span class="page-header__number" aria-hidden="true">01</span> destination
+            <button class="page-header__list__button">
+              <span class="page-header__list__number" aria-hidden="true">01</span> destination
             </button>
           </li>
           <li>
-            <button class="option-button">
-              <span class="page-header__number" aria-hidden="true">02</span> crew
+            <button class="page-header__list__button">
+              <span class="page-header__list__number" aria-hidden="true">02</span> crew
             </button>
           </li>
           <li>
-            <button class="option-button">
-              <span class="page-header__number" aria-hidden="true">04</span> technology
+            <button class="page-header__list__button">
+              <span class="page-header__list__number" aria-hidden="true">03</span> technology
             </button>
           </li>
         </ol>
@@ -71,23 +71,24 @@
       </section>
 
       <section class="destination-section" aria-labelledby="pick-your-destination">
+        <h2 class="destination-section__title" id="pick-your-destination">
+          <span class="destination-section__title__number" aria-hidden="true">01</span> pick your destination
+        </h2>
+
         <div class="destination-section__flex">
           <div>
-            <h2 class="destination-section__title" id="pick-your-destination">
-              <span class="destination-section__title__number" aria-hidden="true">01</span> pick your destination
-            </h2>
-            <div data-js="animation-wrapper">
+            <div data-js="destination-section__animation-wrapper">
               <img data-js="destination-section__image" class="destination-section__image is-active"
-                src="./src/destination/image-moon.png" alt="moon's image"
+                src="./src/destination/image-moon.png" alt="Moon's image"
               >
               <img data-js="destination-section__image" class="destination-section__image"
-                src="./src/destination/image-mars.png" alt="mar's image"
+                src="./src/destination/image-mars.png" alt="Mar's image"
               >
               <img data-js="destination-section__image" class="destination-section__image"
-                src="./src/destination/image-europa.png" alt="europa's image"
+                src="./src/destination/image-europa.png" alt="Europa's image"
               >
               <img data-js="destination-section__image" class="destination-section__image"
-                src="./src/destination/image-titan.png" alt="titan's image"
+                src="./src/destination/image-titan.png" alt="Titan's image"
               >
             </div>
           </div>
@@ -95,20 +96,20 @@
           <div>
             <ul class="destination-section__list">
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button option-button option-button--active">moon</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button destination-section__list__button--active">moon</button>
               </li>
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button option-button">mars</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button">mars</button>
               </li>
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button option-button">europa</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button">europa</button>
               </li>
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button option-button">titan</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button">titan</button>
               </li>
             </ul>
 
-            <div data-js="animation-wrapper">
+            <div data-js="destination-section__animation-wrapper">
               <section data-js="destination-section__destine" class="destination-section__destine is-active">
                 <h3>moon</h3>
                 <p class="destination-section__text">
@@ -128,7 +129,7 @@
                 </dl>
               </section>
 
-              <section data-js="destination-section__destine" class="destination-section__destine is-disabled">
+              <section data-js="destination-section__destine" class="destination-section__destine">
                 <h3>mars</h3>
                 <p class="destination-section__text">
                   Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons,
@@ -146,7 +147,7 @@
                   </div>
               </section>
 
-              <section data-js="destination-section__destine" class="destination-section__destine is-disabled">
+              <section data-js="destination-section__destine" class="destination-section__destine">
                 <h3>europa</h3>
                 <p class="destination-section__text">
                   The smallest of the four Galilean moons orbiting Jupiter, Europa is a
@@ -165,7 +166,7 @@
                   </div>
               </section>
               
-              <section data-js="destination-section__destine" class="destination-section__destine is-disabled">
+              <section data-js="destination-section__destine" class="destination-section__destine">
                 <h3>titan</h3>
                 <p class="destination-section__text">
                   The only moon known to have a dense atmosphere other than Earth, Titan
@@ -183,6 +184,97 @@
                   </div>
               </section>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="crew-section" aria-labelledby="meet-your-crew">
+        <h2 class="crew-section__title" id="meet-your-crew">
+          <span class="crew-section__title__number" aria-hidden="true">02</span> meet your crew
+        </h2>
+
+        <div class="crew-section__flex">
+          <div>
+            <div data-js="crew-section__animation-wrapper">
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant is-active">
+                <h3>
+                  <div class="crew-section__role">Commander</div>
+                  Douglas Hurley
+                </h3>
+                <p class="crew-section__text">
+                  Douglas Gerald Hurley is an American engineer, former Marine Corps pilot
+                  and former NASA astronaut. He launched into space for the third time as
+                  commander of Crew Dragon Demo-2.
+                </p>
+              </section>
+
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant">
+                <h3>
+                  <div class="crew-section__role">Mission Specialist</div>
+                  Mark Shuttleworth
+                </h3>
+                <p class="crew-section__text">
+                  Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind
+                  the Linux-based Ubuntu operating system. Shuttleworth became the first South
+                  African to travel to space as a space tourist.
+                </p>
+              </section>
+
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant">
+                <h3>
+                  <div class="crew-section__role">Pilot</div>
+                  Victor Glover
+                </h3>
+                <p class="crew-section__text">
+                  Pilot on the first operational flight of the SpaceX Crew Dragon to the
+                  International Space Station. Glover is a commander in the U.S. Navy where
+                  he pilots an F/A-18.He was a crew member of Expedition 64, and served as a
+                  station systems flight engineer.
+                </p>
+              </section>
+
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant">
+                <h3>
+                  <div class="crew-section__role">Flight Engineeri</div>
+                  Anousheh Ansari
+                </h3>
+                <p class="crew-section__text">
+                  Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems.
+                  Ansari was the fourth self-funded space tourist, the first self-funded woman to
+                  fly to the ISS, and the first Iranian in space.
+                </p>
+              </section>
+            </div>
+
+            <ul class="crew-section__list">
+              <li>
+                <button data-js="crew-section__list__button" class="crew-section__list__button crew-section__list__button--active" aria-label="go to section 1"></button>
+              </li>
+              <li>
+                <button data-js="crew-section__list__button" class="crew-section__list__button" aria-label="go to section 2"></button>
+              </li>
+              <li>
+                <button data-js="crew-section__list__button" class="crew-section__list__button" aria-label="go to section 3"></button>
+              </li>
+              <li>
+                <button data-js="crew-section__list__button" class="crew-section__list__button" aria-label="go to section 4"></button>
+              </li>
+            </ul>
+          </div>
+
+          <div data-js="crew-section__animation-wrapper">
+            <img data-js="crew-section__image" class="crew-section__image crew-section__image--small is-active"
+              src="src/crew/image-douglas-hurley.png" alt="image of Douglas Hourley"
+            >
+            <img data-js="crew-section__image" class="crew-section__image crew-section__image--small"
+              src="src/crew/image-mark-shuttleworth.png" alt="image of image Mark Shuttleworth"
+            >
+            <img data-js="crew-section__image" class="crew-section__image"
+              src="src/crew/image-victor-glover.png" alt="image of Victor Glover"
+            >
+            <img data-js="crew-section__image" class="crew-section__image"
+              src="src/crew/image-anousheh-ansari.png" alt="image of image Anousheh Ansari"
+            >
           </div>
         </div>
       </section>
