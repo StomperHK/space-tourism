@@ -71,8 +71,8 @@
       </section>
 
       <section class="destination-section" aria-labelledby="pick-your-destination">
-        <h2 class="destination-section__title" id="pick-your-destination">
-          <span class="destination-section__title__number" aria-hidden="true">01</span> pick your destination
+        <h2 id="pick-your-destination">
+          <span class="destination-section__title-number" aria-hidden="true">01</span> pick your destination
         </h2>
 
         <div class="destination-section__flex">
@@ -189,8 +189,8 @@
       </section>
 
       <section class="crew-section" aria-labelledby="meet-your-crew">
-        <h2 class="crew-section__title" id="meet-your-crew">
-          <span class="crew-section__title__number" aria-hidden="true">02</span> meet your crew
+        <h2 id="meet-your-crew">
+          <span class="crew-section__title-number" aria-hidden="true">02</span> meet your crew
         </h2>
 
         <div class="crew-section__flex">
@@ -274,6 +274,75 @@
             >
             <img data-js="crew-section__image" class="crew-section__image"
               src="src/crew/image-anousheh-ansari.png" alt="image of image Anousheh Ansari"
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="technology-section">
+        <h2>
+          <span class="technology-section__title-number" aria-hidden="true">03</span>
+          space launch 101
+        </h2>
+
+        <div class="technology-section__flex">
+          <div class="technology-section__inner__flex">
+            <ul class="technology-section__list">
+              <li>
+                <button data-js="technology-section__list__button" class="technology-section__list__button technology-section__list__button--active">1</button>
+              </li>
+              <li>
+                <button data-js="technology-section__list__button" class="technology-section__list__button">2</button>
+              </li>
+              <li>
+                <button data-js="technology-section__list__button" class="technology-section__list__button">3</button>
+              </li>
+            </ul>
+
+            <div data-js="technology-section__animation-wrapper">
+              <p class="technology-section__terminology">the terminology</p>
+
+              <section data-js="technology-section__vehicle" class="technology-section__vehicle is-active">
+                <h3>Launch vehicle</h3>
+                <p>
+                  A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a
+                  payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X
+                  carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite
+                  an awe-inspiring sight on the launch pad!
+                </p>
+              </section>
+
+              <section data-js="technology-section__vehicle" class="technology-section__vehicle">
+                <h3>Spaceport</h3>
+                <p>
+                  A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by
+                  analogy to the seaport for ships or airport for aircraft. Based in the famous
+                  Cape Canaveral, our spaceport is ideally situated to take advantage of the Earth’s
+                  rotation for launch.
+                </p>
+              </section>
+
+              <section data-js="technology-section__vehicle" class="technology-section__vehicle">
+                <h3>Space capsule</h3>
+                <p>
+                  A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule
+                  to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend
+                  your time during the flight. It includes a space gym, cinema, and plenty of other
+                  activities to keep you entertained.
+                </p>
+              </section>
+            </div>
+          </div>
+  
+          <div data-js="technology-section__animation-wrapper">
+            <img data-js="technology-section__image" class="technology-section__image is-active"
+              src="src/technology/image-launch-vehicle-portrait.jpg" alt="launch vehicle's image"
+            >
+            <img data-js="technology-section__image" class="technology-section__image"
+              src="src/technology/image-spaceport-portrait.jpg" alt="spaceport's image"
+            >
+            <img data-js="technology-section__image" class="technology-section__image"
+              src="src/technology/image-space-capsule-portrait.jpg" alt="space capsule's image"
             >
           </div>
         </div>
