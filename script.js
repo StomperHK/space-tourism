@@ -17,8 +17,14 @@ const crewSectionOptionsELs = Array.from(document.querySelectorAll('[data-js="cr
 const crewSectionTripulantsELs = Array.from(document.querySelectorAll('[data-js="crew-section__tripulant"]'))
 let crewSectionCarouselIndex = 0
 
+const technologySectionAnimationsWrapperELs = Array.from(document.querySelectorAll('[data-js="technology-section__animation-wrapper"]'))
+const technologySectionImagesELs = Array.from(document.querySelectorAll('[data-js="technology-section__image"]'))
+const tecnologySectionOptionsELs = Array.from(document.querySelectorAll('[data-js="technology-section__list__button"]'))
+const technologySectionVehiclesELs = Array.from(document.querySelectorAll('[data-js="technology-section__vehicle"]'))
+let technologySectionCarouselIndex = 0
 
-function changeUnderlinedOption(optionToUnderlineIndex, elementsToAnalise, classToParse) {
+
+function changeUnderlinedOption(elementsToAnalise, optionToUnderlineIndex, classToParse) {
   const underlinedOptionEL = elementsToAnalise.find(value => value.classList.contains(classToParse))
   const optionToUnderlineEL = elementsToAnalise[optionToUnderlineIndex]
 
@@ -32,7 +38,11 @@ function changeToOtherSection(sectionToGoIndex) {
 
   mainEL.style.transform = `translateX(-${amountToTransform}px)`
 
-  changeUnderlinedOption(sectionToGoIndex, navigationOptionsELs, 'page-header__list__button--active')
+  changeUnderlinedOption(navigationOptionsELs, sectionToGoIndex, 'page-header__list__button--active')
+}
+
+function getCarouselItemIndex(carouselIndex) {
+  return [destinationSectionCarouselIndex, crewSectionCarouselIndex, technologySectionCarouselIndex][carouselIndex]
 }
 
 function resetAnimation(value) {
@@ -48,12 +58,14 @@ function changeCarouselItemIndex(sectionToGoIndex, carouselIndex) {
     case 1:
       crewSectionCarouselIndex = sectionToGoIndex
       break
+    case 2:
+      technologySectionCarouselIndex = sectionToGoIndex
   }
 }
 
-function removeAndAddIsActiveClass(carouselSections, carouselImages, sectionToGoIndex, carouselIndex) {   // carouselIndex represents the index of the carousel compared to the others carousels
-  carouselSections[carouselIndex ? crewSectionCarouselIndex : destinationSectionCarouselIndex].classList.remove('is-active')
-  carouselImages[carouselIndex ? crewSectionCarouselIndex : destinationSectionCarouselIndex].classList.remove('is-active')
+function removeAndAddIsActiveClass(carouselImages, carouselSections, sectionToGoIndex, carouselIndex, carouselItemIndex) {   // carouselIndex represents the index of the carousel compared to the others carousels
+  carouselSections[carouselItemIndex].classList.remove('is-active')
+  carouselImages[carouselItemIndex].classList.remove('is-active')
 
   carouselSections[sectionToGoIndex].classList.add('is-active')
   carouselImages[sectionToGoIndex].classList.add('is-active')
@@ -61,31 +73,37 @@ function removeAndAddIsActiveClass(carouselSections, carouselImages, sectionToGo
   changeCarouselItemIndex(sectionToGoIndex, carouselIndex)
 }
 
-function changeActivedButton(buttonToActiveIndex) {
-  const activatedButtonEL = crewSectionOptionsELs.find(value => value.classList.contains('crew-section__list__button--active'))
-  const buttonToActiveEL = crewSectionOptionsELs[buttonToActiveIndex]
+function changeActivatedButton(optionsELs, sectionToGoIndex, className) {
+  const activatedButtonEL = optionsELs.find(value => value.classList.contains(className))
+  const buttonToActiveEL = optionsELs[sectionToGoIndex]
 
-  activatedButtonEL.classList.remove('crew-section__list__button--active')
-  buttonToActiveEL.classList.add('crew-section__list__button--active')
+  activatedButtonEL.classList.remove(className)
+  buttonToActiveEL.classList.add(className)
 }
 
-function moveCarousel(animationWrapper, carouselSections, carouselImages, sectionToGoIndex, carouselIndex) {
-  animationWrapper.forEach(resetAnimation)
+function moveCarousel(carouselItems, carouselInfos) {
+  const [animationWrappers, carouselImages, carouselControls, carouselSections] = carouselItems
+  const [sectionToGoIndex, carouselIndex] = carouselInfos
+  const carouselItemIndex = getCarouselItemIndex(carouselIndex)
 
-  setTimeout(() => removeAndAddIsActiveClass(carouselSections, carouselImages, sectionToGoIndex, carouselIndex), 200)
+  animationWrappers.forEach(resetAnimation)
+
+  setTimeout(() => removeAndAddIsActiveClass(carouselImages, carouselSections, sectionToGoIndex, carouselIndex, carouselItemIndex), 200)
 
   switch (carouselIndex) {
     case  0:
-      changeUnderlinedOption(sectionToGoIndex, destinationSectionOptionsELs, 'destination-section__list__button--active')
+      changeUnderlinedOption(destinationSectionOptionsELs, sectionToGoIndex, 'destination-section__list__button--active')
       break
     case 1:
-      changeActivedButton(sectionToGoIndex)
+      changeActivatedButton(carouselControls, sectionToGoIndex, 'crew-section__list__button--active')
       break
+    case 2:
+      changeActivatedButton(carouselControls, sectionToGoIndex, 'technology-section__list__button--active')
   }
 }
 
 function getCurrentSectionIndex() {
-  return navigationOptionsELs.findIndex(value => value.classList.contains('option-button--active'))
+  return navigationOptionsELs.findIndex(value => value.classList.contains('page-header__list__button--active'))
 }
 
 
@@ -96,11 +114,24 @@ navigationOptionsELs.forEach((value, index) => {
 exploreButtonEL.addEventListener('click', () => changeToOtherSection(1))
 
 destinationSectionOptionsELs.forEach((value, index) => {
-  value.addEventListener('click', () => moveCarousel(destinationSectionAnimationWrappersELs, destinationSectionDestinesELs, destinationSectionImagesELs, index, 0))
+  const carouselItems = [destinationSectionAnimationWrappersELs, destinationSectionImagesELs, destinationSectionOptionsELs, destinationSectionDestinesELs]
+  const carouselInfos = [index, 0, destinationSectionCarouselIndex]
+
+  value.addEventListener('click', () => moveCarousel(carouselItems, carouselInfos))
 })
 
 crewSectionOptionsELs.forEach((value, index) => {
-  value.addEventListener('click', () => moveCarousel(crewSectionAnimationsWrappersELs, crewSectionTripulantsELs, crewSectionImagesELs, index, 1))
+  const carouselItems = [crewSectionAnimationsWrappersELs, crewSectionImagesELs, crewSectionOptionsELs,  crewSectionTripulantsELs]
+  const carouselInfos = [index, 1]
+
+  value.addEventListener('click', () => moveCarousel(carouselItems, carouselInfos))
+})
+
+tecnologySectionOptionsELs.forEach((value, index) => {
+  const carouselItems = [technologySectionAnimationsWrapperELs, technologySectionImagesELs, tecnologySectionOptionsELs, technologySectionVehiclesELs]
+  const carouselInfos = [index, 2, technologySectionCarouselIndex]
+
+  value.addEventListener('click', () => moveCarousel(carouselItems, carouselInfos))
 })
 
 window.addEventListener('resize', () => changeToOtherSection(getCurrentSectionIndex()))
