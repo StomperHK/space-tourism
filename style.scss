@@ -73,6 +73,8 @@ h5 {
 p {
   font-size: 20px;
   font-weight: 300;
+
+  color: var(--lightblue-color);
 }
 
 button {
@@ -265,8 +267,6 @@ main > section {
   &__text {
     max-width: 450px;
 
-    color: var(--lightblue-color);
-
     letter-spacing: 1px;
   }
 
@@ -316,7 +316,7 @@ main > section {
     width: 100%;
   }
   
-  &__title__number {
+  &__title-number {
     color: var(--gray-color)
   }
 
@@ -359,8 +359,6 @@ main > section {
   &__text {
     border-bottom: 1px solid var(--gray-color-border);
     padding-bottom: 36px;
-
-    color: var(--lightblue-color);
   }
 
   &__definitions {
@@ -391,7 +389,7 @@ main > section {
     radial-gradient(farthest-corner at center center, transparent 50%, black 90%),
     url('./src/crew/background-crew-desktop.jpg');
 
-  &__title__number {
+  &__title-number {
     color: var(--gray-color)
   }
 
@@ -417,9 +415,7 @@ main > section {
 
   &__text {
     margin: 30px 0px 90px;
-    max-width: 40vw;
-
-    color: var(--lightblue-color);
+    max-width: 35vw;
   }
 
   &__list {
@@ -469,6 +465,86 @@ main > section {
     &--small {
       width: 23vw;
     }
+  }
+}
+
+.technology-section {
+  padding-right: 0px;
+
+  background-image:
+    radial-gradient(farthest-corner at center center, transparent 50%, black 90%),
+    url('./src/technology/background-technology-desktop.jpg');
+
+  &__title-number {
+    color: var(--gray-color);
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  &__inner__flex {
+    display: flex;
+  }
+
+  &__list {
+    flex-shrink: none;
+
+    margin-right: 3vw;
+
+    list-style: none;
+
+    li + li {
+      margin-top: 16px;
+    }
+  }
+
+  &__list__button {
+    border: 2px solid var(--gray-color-button);
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    transition: border-color 150ms linear, background-color 150ms linear;
+
+    &--active {
+      border-color: var(--white-color) !important;
+      background-color: var(--white-color);
+      color: var(--black-color);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--gray-color);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        border-color: var(--gray-color);
+      }
+    }
+  }
+
+  &__terminology {
+    text-transform: uppercase;
+  }
+
+  &__vehicle {
+    display: none;
+    max-width: 40vw;
+  }
+  
+  &__image {
+    display: none;
+    width: 30vw;
   }
 }
 
