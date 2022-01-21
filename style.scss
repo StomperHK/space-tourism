@@ -169,6 +169,9 @@ button {
 
     background-color: var(--gray-color-small-opacity);
 
+    transition: opacity 150ms ease-out;
+
+
     @supports (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px)) {
       & {
         -webkit-backdrop-filter: blur(16px);
@@ -215,8 +218,7 @@ button {
 main {
   display: flex;
 
-  transition: transform 300ms ease-out;
-
+  transition: transform 300ms ease-in-out;
 }
 
 main > section {
@@ -236,12 +238,16 @@ main > section {
     radial-gradient(farthest-corner at center center, transparent 50%, black 90%),
     url('./src/home/background-home-desktop.jpg');
 
+  transition: opacity 150ms ease-out;
+
   &__flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     width: 100%;
+
+    transition: transform 200ms ease-out, opacity 200ms ease-out;
   }
 
   &__title {
@@ -318,6 +324,10 @@ main > section {
   
   &__title-number {
     color: var(--gray-color)
+  }
+
+  &__animation-wrapper {
+    transition: transform 300ms ease-out, opacity 300ms ease-out;
   }
 
   &__image {
@@ -399,6 +409,8 @@ main > section {
     align-items: flex-end;
 
     width: 100%;
+
+    transition: transform 200ms ease-out, opacity 200ms ease-out;
   }
 
   &__tripulant {
@@ -491,6 +503,10 @@ main > section {
     display: flex;
   }
 
+  &__animation-wrapper {
+    transition: transform 300ms ease-out, opacity 300ms ease-out;
+  }
+
   &__list {
     flex-shrink: none;
 
@@ -512,7 +528,7 @@ main > section {
 
     font-size: 24px;
 
-    transition: border-color 150ms linear, background-color 150ms linear;
+    transition: border-color 150ms linear, background-color 150ms linear, color 150ms linear;
 
     &--active {
       border-color: var(--white-color) !important;
@@ -548,6 +564,24 @@ main > section {
   }
 }
 
+.loading-circle {
+  display: none;
+
+  padding: 20px;
+  border: 5px solid transparent;
+  border-left-color: var(--white-color);
+  border-top-color: var(--white-color);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  
+  border-radius: 50%;
+
+  animation: rotate-loading-circle 800ms ease-in-out infinite;
+}
+
 
 @media (pointer: coarse) {
   * {
@@ -580,7 +614,13 @@ main > section {
   to {
     opacity: 1;
   }
-} 
+}
+
+@keyframes rotate-loading-circle {
+  to {
+    transform: translate(-50%) rotate(360deg);
+  }
+}
 
 
 .is-active {
@@ -589,4 +629,34 @@ main > section {
 
 .is-animating {
   animation: fade-in-and-show 350ms linear;
+}
+
+.is-disabled {
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.is-hidden {
+  transform: translateY(40%);
+
+  opacity: 0;
+}
+
+.is-hidden-to-left {
+  transform: translateX(-40%);
+
+  opacity: 0;
+}
+
+.is-hidden-to-right {
+  transform: translateX(40%);
+
+  opacity: 0;
+}
+
+.is-hidden-to-top {
+  transform: translateY(-40%);
+
+  opacity: 0;
 }

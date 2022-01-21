@@ -87,6 +87,7 @@ button {
   position: relative;
   border-radius: 6px 0px 0px 6px;
   background-color: var(--gray-color-small-opacity);
+  transition: opacity 150ms ease-out;
 }
 @supports (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px)) {
   .page-header__navigation {
@@ -161,7 +162,7 @@ button {
 
 main {
   display: flex;
-  transition: transform 300ms ease-out;
+  transition: transform 300ms ease-in-out;
 }
 
 main > section {
@@ -176,12 +177,14 @@ main > section {
 
 .home-section {
   background-image: radial-gradient(farthest-corner at center center, transparent 50%, black 90%), url("./src/home/background-home-desktop.jpg");
+  transition: opacity 150ms ease-out;
 }
 .home-section__flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
 }
 .home-section__title {
   text-transform: uppercase;
@@ -235,6 +238,9 @@ main > section {
 }
 .destination-section__title-number {
   color: var(--gray-color);
+}
+.destination-section__animation-wrapper {
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
 }
 .destination-section__image {
   display: none;
@@ -333,6 +339,7 @@ main > section {
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
 }
 .crew-section__tripulant {
   display: none;
@@ -395,9 +402,13 @@ main > section {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
 }
 .technology-section__inner__flex {
   display: flex;
+}
+.technology-section__animation-wrapper {
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
 }
 .technology-section__list {
   flex-shrink: none;
@@ -413,7 +424,7 @@ main > section {
   height: 50px;
   border-radius: 50%;
   font-size: 24px;
-  transition: border-color 150ms linear, background-color 150ms linear;
+  transition: border-color 150ms linear, background-color 150ms linear, color 150ms linear;
 }
 .technology-section__list__button--active {
   border-color: var(--white-color) !important;
@@ -442,6 +453,20 @@ main > section {
   width: 30vw;
 }
 
+.loading-circle {
+  display: none;
+  padding: 20px;
+  border: 5px solid transparent;
+  border-left-color: var(--white-color);
+  border-top-color: var(--white-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 50%;
+  animation: rotate-loading-circle 800ms ease-in-out infinite;
+}
+
 @media (pointer: coarse) {
   * {
     cursor: default;
@@ -467,12 +492,42 @@ main > section {
     opacity: 1;
   }
 }
+@keyframes rotate-loading-circle {
+  to {
+    transform: translate(-50%) rotate(360deg);
+  }
+}
 .is-active {
   display: block;
 }
 
 .is-animating {
   animation: fade-in-and-show 350ms linear;
+}
+
+.is-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.is-hidden {
+  transform: translateY(40%);
+  opacity: 0;
+}
+
+.is-hidden-to-left {
+  transform: translateX(-40%);
+  opacity: 0;
+}
+
+.is-hidden-to-right {
+  transform: translateX(40%);
+  opacity: 0;
+}
+
+.is-hidden-to-top {
+  transform: translateY(-40%);
+  opacity: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
