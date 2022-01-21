@@ -1,28 +1,60 @@
 "use strict"
 
+const pageNavigationEL = document.querySelector('[data-js="page-header__navigation"]')
+const headerOptionsELs = Array.from(document.querySelectorAll('[data-js="page-header__list"] button'))
+
 const mainEL = document.querySelector('main')
 
-const navigationOptionsELs = Array.from(document.querySelectorAll('[data-js="page-header__list"] button'))
+const homeSectionFlexEL = document.querySelector('[data-js="home-section__flex"]')
+const homeSectionEL = document.querySelector('[data-js="home-section"]')
 const exploreButtonEL = document.querySelector('[data-js="explore-button"]')
 
 const destinationSectionAnimationWrappersELs = Array.from(document.querySelectorAll('[data-js="destination-section__animation-wrapper"]'))
 const destinationSectionImagesELs = Array.from(document.querySelectorAll('[data-js="destination-section__image"]'))
+const destinationSectionOptionsListEL = document.querySelector('[data-js="destination-section__list"]')
 const destinationSectionOptionsELs = Array.from(document.querySelectorAll('[data-js="destination-section__list__button"]'))
 const destinationSectionDestinesELs = Array.from(document.querySelectorAll('[data-js="destination-section__destine"]'))
 let destinationSectionCarouselIndex = 0
 
 const crewSectionAnimationsWrappersELs = Array.from(document.querySelectorAll('[data-js="crew-section__animation-wrapper"]'))
 const crewSectionImagesELs = Array.from(document.querySelectorAll('[data-js="crew-section__image"]'))
+const crewSectionOptionsListEL = document.querySelector('[data-js="crew-section__list"]')
 const crewSectionOptionsELs = Array.from(document.querySelectorAll('[data-js="crew-section__list__button"]'))
 const crewSectionTripulantsELs = Array.from(document.querySelectorAll('[data-js="crew-section__tripulant"]'))
 let crewSectionCarouselIndex = 0
 
 const technologySectionAnimationsWrapperELs = Array.from(document.querySelectorAll('[data-js="technology-section__animation-wrapper"]'))
 const technologySectionImagesELs = Array.from(document.querySelectorAll('[data-js="technology-section__image"]'))
+const tecnologySectionOptionsListELs = document.querySelector('[data-js="technology-section__list"]')
 const tecnologySectionOptionsELs = Array.from(document.querySelectorAll('[data-js="technology-section__list__button"]'))
 const technologySectionVehiclesELs = Array.from(document.querySelectorAll('[data-js="technology-section__vehicle"]'))
 let technologySectionCarouselIndex = 0
 
+const loadingCircleEL = document.querySelector('[data-js="loading-circle"]')
+
+
+function manageTabListFocus(event, tabsELs) {
+  const pressedKey = event.key
+  const focusedTabIndex = tabsELs.findIndex(value => document.activeElement === value)
+  const tabsLastIndex = tabsELs.length - 1
+
+  switch (pressedKey) {
+    case "ArrowLeft":
+      tabsELs[focusedTabIndex ? focusedTabIndex-1 : tabsLastIndex].focus()
+      break
+    case "ArrowRight":
+      tabsELs[focusedTabIndex === tabsLastIndex ? 0 : focusedTabIndex+1].focus()
+  }
+}
+
+function changeAriaSelectedToFalse(value) {
+  value.ariaSelected = 'false'
+}
+
+function changeAriaSelectedTab(tabsELs, sectionToGoIndex) {
+  tabsELs.forEach(changeAriaSelectedToFalse)
+  tabsELs[sectionToGoIndex].ariaSelected = 'true'
+}
 
 function changeUnderlinedOption(elementsToAnalise, optionToUnderlineIndex, classToParse) {
   const underlinedOptionEL = elementsToAnalise.find(value => value.classList.contains(classToParse))
@@ -32,13 +64,59 @@ function changeUnderlinedOption(elementsToAnalise, optionToUnderlineIndex, class
   optionToUnderlineEL.classList.add(classToParse)
 }
 
+function scheduleClassesRemotion(callback, time) {
+  setTimeout(callback, time)
+}
+
+function removeIsHiddenClass(sectionToGoIndex) {
+  if (sectionToGoIndex === 0 || sectionToGoIndex == 2) {
+    scheduleClassesRemotion(() => {
+      const flexContainerEL = mainEL.children[sectionToGoIndex].querySelector('[class*=__flex]')
+  
+      flexContainerEL.classList.remove('is-hidden')
+    }, 400)
+  }
+  else if (sectionToGoIndex === 1) {
+    scheduleClassesRemotion(() => {
+      const [firstWrapper, secondWrapper] = destinationSectionAnimationWrappersELs
+
+      firstWrapper.classList.remove('is-hidden-to-left')
+      secondWrapper.classList.remove('is-hidden-to-right')
+    }, 400)
+  }
+  else {
+    scheduleClassesRemotion(() => {
+      const [firstWrapper, secondWrapper] = technologySectionAnimationsWrapperELs
+
+      firstWrapper.classList.remove('is-hidden')
+      secondWrapper.classList.remove('is-hidden-to-top')
+    }, 400)
+  }
+}
+
+function preventExternalButtonsFromReceivingFocus(sectionToGoIndex) {
+  const buttonsELs = Array.from(document.querySelectorAll('main button'))
+  const visibleButonsELs = Array.from(mainEL.children[sectionToGoIndex].querySelectorAll('button'))
+
+  buttonsELs.forEach(value => value.tabIndex = '-1')
+  visibleButonsELs.forEach(value => value.tabIndex = '0')
+}
+
+preventExternalButtonsFromReceivingFocus(0)
+
 function changeToOtherSection(sectionToGoIndex) {
   const viewportWidth = document.body.clientWidth
   const amountToTransform = sectionToGoIndex ? viewportWidth * sectionToGoIndex : 0
 
   mainEL.style.transform = `translateX(-${amountToTransform}px)`
 
-  changeUnderlinedOption(navigationOptionsELs, sectionToGoIndex, 'page-header__list__button--active')
+  changeAriaSelectedTab(headerOptionsELs, sectionToGoIndex)
+
+  changeUnderlinedOption(headerOptionsELs, sectionToGoIndex, 'page-header__list__button--active')
+
+  removeIsHiddenClass(sectionToGoIndex)
+
+  preventExternalButtonsFromReceivingFocus(sectionToGoIndex)
 }
 
 function getCarouselItemIndex(carouselIndex) {
@@ -90,9 +168,11 @@ function moveCarousel(carouselItems, carouselInfos) {
 
   setTimeout(() => removeAndAddIsActiveClass(carouselImages, carouselSections, sectionToGoIndex, carouselIndex, carouselItemIndex), 200)
 
+  changeAriaSelectedTab(carouselControls, sectionToGoIndex)
+
   switch (carouselIndex) {
     case  0:
-      changeUnderlinedOption(destinationSectionOptionsELs, sectionToGoIndex, 'destination-section__list__button--active')
+      changeUnderlinedOption(carouselControls, sectionToGoIndex, 'destination-section__list__button--active')
       break
     case 1:
       changeActivatedButton(carouselControls, sectionToGoIndex, 'crew-section__list__button--active')
@@ -103,11 +183,29 @@ function moveCarousel(carouselItems, carouselInfos) {
 }
 
 function getCurrentSectionIndex() {
-  return navigationOptionsELs.findIndex(value => value.classList.contains('page-header__list__button--active'))
+  return headerOptionsELs.findIndex(value => value.classList.contains('page-header__list__button--active'))
+}
+
+function showInitialContent() {
+  scheduleClassesRemotion(() => {
+    pageNavigationEL.classList.remove('is-disabled')
+    homeSectionEL.classList.remove('is-disabled')
+    loadingCircleEL.classList.remove('is-active')
+  }, 1500)
+
+  scheduleClassesRemotion(() => homeSectionFlexEL.classList.remove('is-hidden'), 2000)
 }
 
 
-navigationOptionsELs.forEach((value, index) => {
+pageNavigationEL.addEventListener('keydown', event => manageTabListFocus(event, headerOptionsELs))
+
+destinationSectionOptionsListEL.addEventListener('keydown', event => manageTabListFocus(event, destinationSectionOptionsELs))
+
+crewSectionOptionsListEL.addEventListener('keydown', event => manageTabListFocus(event, crewSectionOptionsELs))
+
+tecnologySectionOptionsListELs.addEventListener('keydown', event => manageTabListFocus(event, tecnologySectionOptionsELs))
+
+headerOptionsELs.forEach((value, index) => {
   value.addEventListener('click', () => changeToOtherSection(index))
 })
 
@@ -135,3 +233,5 @@ tecnologySectionOptionsELs.forEach((value, index) => {
 })
 
 window.addEventListener('resize', () => changeToOtherSection(getCurrentSectionIndex()))
+
+window.addEventListener('load', showInitialContent)
