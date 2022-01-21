@@ -22,25 +22,33 @@
     <header class="page-header">
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><g fill="none" fill-rule="evenodd"><circle cx="24" cy="24" r="24" fill="#FFF"/><path fill="#0B0D17" d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"/></g></svg>
 
-      <nav class="page-header__navigation">
+      <nav data-js="page-header__navigation" class="page-header__navigation is-disabled" role="tabpanel">
         <ol data-js="page-header__list" class="page-header__list">
           <li>
-            <button class="page-header__list__button page-header__list__button--active">
+            <button class="page-header__list__button page-header__list__button--active"
+              id="home-tab" role="tab" aria-controls="home-section" aria-selected="true"
+            >
               <span class="page-header__list__number" aria-hidden="true">00</span> home
             </button>
           </li>
           <li> 
-            <button class="page-header__list__button">
+            <button class="page-header__list__button"
+              id="destination-tab" role="tab" aria-controls="destination-section" aria-selected="false"
+            >
               <span class="page-header__list__number" aria-hidden="true">01</span> destination
             </button>
           </li>
           <li>
-            <button class="page-header__list__button">
+            <button class="page-header__list__button"
+              id="crew-tab" role="tab" aria-controls="crew-section" aria-selected="false"
+            >
               <span class="page-header__list__number" aria-hidden="true">02</span> crew
             </button>
           </li>
           <li>
-            <button class="page-header__list__button">
+            <button class="page-header__list__button"
+              id="technology-tab" role="tab" aria-controls="technology-section" aria-selected="false"
+            >
               <span class="page-header__list__number" aria-hidden="true">03</span> technology
             </button>
           </li>
@@ -49,10 +57,12 @@
     </header>
 
     <main>
-      <section class="home-section" aria-labelledby="so-you-want-travel">
-        <div class="home-section__flex">
+      <section data-js="home-section" class="home-section is-disabled" 
+        id="home-section" role="tabpanel" aria-labelledby="home-tab"
+      >
+        <div data-js="home-section__flex" class="home-section__flex is-hidden">
           <div>
-            <h1 class="home-section__title" id="so-you-want-travel">
+            <h1 class="home-section__title">
               <span class="home-section__title__small">so, you want travel to</span>
               <strong class="home-section__title__big">space</strong>
             </h1>
@@ -70,47 +80,65 @@
         </div>
       </section>
 
-      <section class="destination-section" aria-labelledby="pick-your-destination">
-        <h2 id="pick-your-destination">
+      <section class="destination-section"
+        id="destination-section" role="tabpanel" aria-labelledby="destination-tab"
+      >
+        <h2>
           <span class="destination-section__title-number" aria-hidden="true">01</span> pick your destination
         </h2>
 
         <div class="destination-section__flex">
-          <div>
-            <div data-js="destination-section__animation-wrapper">
-              <img data-js="destination-section__image" class="destination-section__image is-active"
-                src="./src/destination/image-moon.png" alt="Moon's image"
-              >
-              <img data-js="destination-section__image" class="destination-section__image"
-                src="./src/destination/image-mars.png" alt="Mar's image"
-              >
-              <img data-js="destination-section__image" class="destination-section__image"
-                src="./src/destination/image-europa.png" alt="Europa's image"
-              >
-              <img data-js="destination-section__image" class="destination-section__image"
-                src="./src/destination/image-titan.png" alt="Titan's image"
-              >
-            </div>
+          <div data-js="destination-section__animation-wrapper" class="destination-section__animation-wrapper is-hidden-to-left">
+            <img data-js="destination-section__image" class="destination-section__image is-active"
+              src="./src/destination/image-moon.png" alt="Moon's image"
+            >
+            <img data-js="destination-section__image" class="destination-section__image"
+              src="./src/destination/image-mars.png" alt="Mar's image"
+            >
+            <img data-js="destination-section__image" class="destination-section__image"
+              src="./src/destination/image-europa.png" alt="Europa's image"
+            >
+            <img data-js="destination-section__image" class="destination-section__image"
+              src="./src/destination/image-titan.png" alt="Titan's image"
+            >
           </div>
 
           <div>
-            <ul class="destination-section__list">
+            <ul data-js="destination-section__list" class="destination-section__list" role="tablist">
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button destination-section__list__button--active">moon</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button destination-section__list__button--active"
+                  id="moon-tab" role="tab" aria-controls="moon-tabpanel" aria-selected="true"
+                >
+                  moon
+                </button>
               </li>
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button">mars</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button"
+                  id="mars-tab" role="tab" aria-controls="mars-tabpanel" aria-selected="false"
+                >
+                  mars
+                </button>
               </li>
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button">europa</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button"
+                  id="europa-tab" role="tab" aria-controls="europa-tabpanel" aria-selected="false"
+                >
+                  europa
+                </button>
               </li>
               <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button">titan</button>
+                <button data-js="destination-section__list__button" class="destination-section__list__button"
+                  id="titan-tab" role="tab" aria-controls="titan-tabpanel" aria-selected="false"
+                >
+                  titan
+                </button>
               </li>
             </ul>
 
-            <div data-js="destination-section__animation-wrapper">
-              <section data-js="destination-section__destine" class="destination-section__destine is-active">
+            <div data-js="destination-section__animation-wrapper" class="destination-section__animation-wrapper is-hidden-to-right">
+              <section data-js="destination-section__destine" class="destination-section__destine is-active"
+                id="moon-tabpanel" role="tabpanel" aria-labelledby="moon-tab"
+              >
                 <h3>moon</h3>
                 <p class="destination-section__text">
                   See our planet as you’ve never seen it before. A perfect relaxing trip away to help
@@ -129,7 +157,9 @@
                 </dl>
               </section>
 
-              <section data-js="destination-section__destine" class="destination-section__destine">
+              <section data-js="destination-section__destine" class="destination-section__destine"
+                id="mars-tabpanel" role="tabpanel" aria-labelledby="mars-tab"
+              >
                 <h3>mars</h3>
                 <p class="destination-section__text">
                   Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons,
@@ -147,7 +177,9 @@
                   </div>
               </section>
 
-              <section data-js="destination-section__destine" class="destination-section__destine">
+              <section data-js="destination-section__destine" class="destination-section__destine"
+                id="europa-tabpanel" role="tabpanel" aria-labelledby="europa-tab"
+              >
                 <h3>europa</h3>
                 <p class="destination-section__text">
                   The smallest of the four Galilean moons orbiting Jupiter, Europa is a
@@ -166,7 +198,9 @@
                   </div>
               </section>
               
-              <section data-js="destination-section__destine" class="destination-section__destine">
+              <section data-js="destination-section__destine" class="destination-section__destine"
+                id="titan-tabpanel" role="tabpanel" aria-labelledby="titan-tab"
+              >
                 <h3>titan</h3>
                 <p class="destination-section__text">
                   The only moon known to have a dense atmosphere other than Earth, Titan
@@ -188,15 +222,19 @@
         </div>
       </section>
 
-      <section class="crew-section" aria-labelledby="meet-your-crew">
-        <h2 id="meet-your-crew">
+      <section class="crew-section" 
+        id="crew-section" role="tabpanel" aria-labelledby="crew-tab"
+      >
+        <h2>
           <span class="crew-section__title-number" aria-hidden="true">02</span> meet your crew
         </h2>
 
-        <div class="crew-section__flex">
+        <div class="crew-section__flex is-hidden">
           <div>
             <div data-js="crew-section__animation-wrapper">
-              <section data-js="crew-section__tripulant" class="crew-section__tripulant is-active">
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant is-active"
+                id="douglas-tabpanel" role="tabpanel" aria-labelledby="douglas-tab"
+              >
                 <h3>
                   <div class="crew-section__role">Commander</div>
                   Douglas Hurley
@@ -208,7 +246,9 @@
                 </p>
               </section>
 
-              <section data-js="crew-section__tripulant" class="crew-section__tripulant">
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant"
+                id="mark-tabpanel" role="tabpanel" aria-labelledby="mark-tab"
+              >
                 <h3>
                   <div class="crew-section__role">Mission Specialist</div>
                   Mark Shuttleworth
@@ -220,7 +260,9 @@
                 </p>
               </section>
 
-              <section data-js="crew-section__tripulant" class="crew-section__tripulant">
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant"
+                id="victor-tabpanel" role="tabpanel" aria-labelledby="victor-tab"
+              >
                 <h3>
                   <div class="crew-section__role">Pilot</div>
                   Victor Glover
@@ -233,7 +275,9 @@
                 </p>
               </section>
 
-              <section data-js="crew-section__tripulant" class="crew-section__tripulant">
+              <section data-js="crew-section__tripulant" class="crew-section__tripulant"
+                id="anounesh-tabpanel" role="tabpanel" aria-labelledby="anounesh-tab"
+              >
                 <h3>
                   <div class="crew-section__role">Flight Engineeri</div>
                   Anousheh Ansari
@@ -246,24 +290,36 @@
               </section>
             </div>
 
-            <ul class="crew-section__list">
+            <ul data-js="crew-section__list" class="crew-section__list" role="tablsit">
               <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button crew-section__list__button--active" aria-label="go to section 1"></button>
+                <button data-js="crew-section__list__button" class="crew-section__list__button crew-section__list__button--active"
+                  id="douglas-tab" role="tab" aria-controls="douglas-tabpanel" aria-label="douglas tripulant" aria-selected="true"
+                >
+                </button>
               </li>
               <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button" aria-label="go to section 2"></button>
+                <button data-js="crew-section__list__button" class="crew-section__list__button" 
+                  id="mark-tab" role="tab" aria-controls="mark-tabpanel" aria-label="mark tripulant" aria-selected="false"
+                >
+                </button>
               </li>
               <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button" aria-label="go to section 3"></button>
+                <button data-js="crew-section__list__button" class="crew-section__list__button" 
+                  id="victor-tab" role="tab" aria-controls="victor-tabpanel" aria-label="victor tripulant" aria-selected="false"
+                >
+                </button>
               </li>
               <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button" aria-label="go to section 4"></button>
+                <button data-js="crew-section__list__button" class="crew-section__list__button"
+                  id="anounesh-tab" role="tab" aria-controls="anounesh-tabpanel" aria-label="anounesh tripulant" aria-selected="false"
+                >
+                </button>
               </li>
             </ul>
           </div>
 
           <div data-js="crew-section__animation-wrapper">
-            <img data-js="crew-section__image" class="crew-section__image crew-section__image--small is-active"
+            <img data-js="crew-section__image" class="crew-section__image is-active"
               src="src/crew/image-douglas-hurley.png" alt="image of Douglas Hourley"
             >
             <img data-js="crew-section__image" class="crew-section__image crew-section__image--small"
@@ -279,7 +335,9 @@
         </div>
       </section>
 
-      <section class="technology-section">
+      <section class="technology-section"
+        id="technology-section" role="tabpanel" aria-labelledby="technology-tab"
+      >
         <h2>
           <span class="technology-section__title-number" aria-hidden="true">03</span>
           space launch 101
@@ -287,22 +345,36 @@
 
         <div class="technology-section__flex">
           <div class="technology-section__inner__flex">
-            <ul class="technology-section__list">
+            <ul data-js="technology-section__list" class="technology-section__list" role="tablist">
               <li>
-                <button data-js="technology-section__list__button" class="technology-section__list__button technology-section__list__button--active">1</button>
+                <button data-js="technology-section__list__button" class="technology-section__list__button technology-section__list__button--active"
+                  id="launch-vehicle-tab" role="tab" aria-controls="launch-vehicle-tabpanel" aria-label="launch vehicle" aria-selected="true"
+                >
+                  1
+                </button>
               </li>
               <li>
-                <button data-js="technology-section__list__button" class="technology-section__list__button">2</button>
+                <button data-js="technology-section__list__button" class="technology-section__list__button"
+                  id="spaceport-tab" role="tab" aria-controls="spaceport-tabpanel" aria-label="spaceport" aria-selected="false"
+                >
+                  2
+                </button>
               </li>
               <li>
-                <button data-js="technology-section__list__button" class="technology-section__list__button">3</button>
+                <button data-js="technology-section__list__button" class="technology-section__list__button"
+                  id="space-capsule-tab" role="tab" aria-controls="space-capsule-tabpanel" aria-label="space capsule" aria-selected="false"
+                >
+                  3
+                </button>
               </li>
             </ul>
 
-            <div data-js="technology-section__animation-wrapper">
+            <div data-js="technology-section__animation-wrapper" class="technology-section__animation-wrapper is-hidden">
               <p class="technology-section__terminology">the terminology</p>
 
-              <section data-js="technology-section__vehicle" class="technology-section__vehicle is-active">
+              <section data-js="technology-section__vehicle" class="technology-section__vehicle is-active"
+                id="launch-vehicle-tabpanel" role="tabpanel" aria-labelledby="launch-vehicle-tab"
+              >
                 <h3>Launch vehicle</h3>
                 <p>
                   A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a
@@ -312,7 +384,9 @@
                 </p>
               </section>
 
-              <section data-js="technology-section__vehicle" class="technology-section__vehicle">
+              <section data-js="technology-section__vehicle" class="technology-section__vehicle"
+                id="spaceport-tabpanel" role="tabpanel" aria-labelledby="spaceport-tab"
+              >
                 <h3>Spaceport</h3>
                 <p>
                   A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by
@@ -322,7 +396,9 @@
                 </p>
               </section>
 
-              <section data-js="technology-section__vehicle" class="technology-section__vehicle">
+              <section data-js="technology-section__vehicle" class="technology-section__vehicle"
+                id="space-capsule-tabpanel" role="tabpanel" aria-labelledby="space-capsule-tab"
+              >
                 <h3>Space capsule</h3>
                 <p>
                   A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule
@@ -334,7 +410,7 @@
             </div>
           </div>
   
-          <div data-js="technology-section__animation-wrapper">
+          <div data-js="technology-section__animation-wrapper" class="technology-section__animation-wrapper is-hidden-to-top">
             <img data-js="technology-section__image" class="technology-section__image is-active"
               src="src/technology/image-launch-vehicle-portrait.jpg" alt="launch vehicle's image"
             >
@@ -348,6 +424,8 @@
         </div>
       </section>
     </main>
+
+    <div data-js="loading-circle" class="loading-circle is-active"></div>
 
     <script src="script.js"></script>
   </body>
