@@ -56,7 +56,7 @@
       </nav>
     </header>
 
-    <main>
+    <main aria-busy="true" aria-describedby="loading-circle">
       <section data-js="home-section" class="home-section is-disabled" 
         id="home-section" role="tabpanel" aria-labelledby="home-tab"
       >
@@ -425,7 +425,7 @@
       </section>
     </main>
 
-    <div data-js="loading-circle" class="loading-circle is-active"></div>
+    <div data-js="loading-circle" class="loading-circle is-active" id="loading-circle" role="progressbar"></div>
 
     <script src="script.js"></script>
   </body>

@@ -186,7 +186,9 @@ function getCurrentSectionIndex() {
   return headerOptionsELs.findIndex(value => value.classList.contains('page-header__list__button--active'))
 }
 
-function showInitialContent() {
+function readyPage() {
+  mainEL.ariaBusy = "false"
+
   scheduleClassesRemotion(() => {
     pageNavigationEL.classList.remove('is-disabled')
     homeSectionEL.classList.remove('is-disabled')
@@ -234,4 +236,6 @@ tecnologySectionOptionsELs.forEach((value, index) => {
 
 window.addEventListener('resize', () => changeToOtherSection(getCurrentSectionIndex()))
 
-window.addEventListener('load', showInitialContent)
+
+  mainEL.ariaBusy="false"
+window.addEventListener('load', readyPage)
