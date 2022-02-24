@@ -24,7 +24,7 @@ const crewSectionTripulantsELs = Array.from(document.querySelectorAll('[data-js=
 let crewSectionCarouselIndex = 0
 
 const technologySectionAnimationsWrapperELs = Array.from(document.querySelectorAll('[data-js="technology-section__animation-wrapper"]'))
-const technologySectionImagesELs = Array.from(document.querySelectorAll('[data-js="technology-section__image"]'))
+const technologySectionPictureWrappersELs = Array.from(document.querySelectorAll('[data-js="technology-section__picture-wrapper"]'))
 const tecnologySectionOptionsListELs = document.querySelector('[data-js="technology-section__list"]')
 const tecnologySectionOptionsELs = Array.from(document.querySelectorAll('[data-js="technology-section__list__button"]'))
 const technologySectionVehiclesELs = Array.from(document.querySelectorAll('[data-js="technology-section__vehicle"]'))
@@ -228,7 +228,7 @@ crewSectionOptionsELs.forEach((value, index) => {
 })
 
 tecnologySectionOptionsELs.forEach((value, index) => {
-  const carouselItems = [technologySectionAnimationsWrapperELs, technologySectionImagesELs, tecnologySectionOptionsELs, technologySectionVehiclesELs]
+  const carouselItems = [technologySectionAnimationsWrapperELs, technologySectionPictureWrappersELs, tecnologySectionOptionsELs, technologySectionVehiclesELs]
   const carouselInfos = [index, 2, technologySectionCarouselIndex]
 
   value.addEventListener('click', () => moveCarousel(carouselItems, carouselInfos))
