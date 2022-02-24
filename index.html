@@ -57,7 +57,7 @@
     </header>
 
     <main aria-busy="true" aria-describedby="loading-circle">
-      <section data-js="home-section" class="home-section is-disabled" 
+      <section data-js="home-section" class="home-section is-disabled"
         id="home-section" role="tabpanel" aria-labelledby="home-tab"
       >
         <div data-js="home-section__flex" class="home-section__flex is-hidden">
@@ -139,9 +139,8 @@
               <section data-js="destination-section__destine" class="destination-section__destine is-active"
                 id="moon-tabpanel" role="tabpanel" aria-labelledby="moon-tab"
               >
-                <h3>moon</h3>
+                <h3 class="destination-section__title">moon</h3>
                 <p class="destination-section__text">
-                  See our planet as you’ve never seen it before. A perfect relaxing trip away to help
                   regain perspective and come back refreshed. While you’re there, take in some history
                   by visiting the Luna 2 and Apollo 11 landing sites.
                 </p>
@@ -160,7 +159,7 @@
               <section data-js="destination-section__destine" class="destination-section__destine"
                 id="mars-tabpanel" role="tabpanel" aria-labelledby="mars-tab"
               >
-                <h3>mars</h3>
+                <h3 class="destination-section__title">mars</h3>
                 <p class="destination-section__text">
                   Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons,
                   the tallest planetary mountain in our solar system. It’s two and a half times
@@ -180,12 +179,11 @@
               <section data-js="destination-section__destine" class="destination-section__destine"
                 id="europa-tabpanel" role="tabpanel" aria-labelledby="europa-tab"
               >
-                <h3>europa</h3>
+                <h3 class="destination-section__title">europa</h3>
                 <p class="destination-section__text">
                   The smallest of the four Galilean moons orbiting Jupiter, Europa is a
-                  winter lover’s dream. With an icy surface, it’s perfect for a bit of
-                  ice skating, curling, hockey, or simple relaxation in your snug
-                  wintery cabin.
+                  winter lover’s dream. it's icy surface is perfect for
+                  ice skating, hockey, or simple relaxation in your winter cabin.
                 </p>
                 <dl class="destination-section__definitions">
                   <div>
@@ -201,10 +199,10 @@
               <section data-js="destination-section__destine" class="destination-section__destine"
                 id="titan-tabpanel" role="tabpanel" aria-labelledby="titan-tab"
               >
-                <h3>titan</h3>
+                <h3 class="destination-section__title">titan</h3>
                 <p class="destination-section__text">
                   The only moon known to have a dense atmosphere other than Earth, Titan
-                  is a home away from home (just a few hundred degrees colder!). As a
+                  is a away home (just a few hundred degrees colder!). As a
                   bonus, you get striking views of the Rings of Saturn.
                 </p>
                 <dl class="destination-section__definitions">
@@ -222,7 +220,7 @@
         </div>
       </section>
 
-      <section class="crew-section" 
+      <section class="crew-section"
         id="crew-section" role="tabpanel" aria-labelledby="crew-tab"
       >
         <h2>
@@ -235,7 +233,7 @@
               <section data-js="crew-section__tripulant" class="crew-section__tripulant is-active"
                 id="douglas-tabpanel" role="tabpanel" aria-labelledby="douglas-tab"
               >
-                <h3>
+                <h3 class="crew-section__title">
                   <div class="crew-section__role">Commander</div>
                   Douglas Hurley
                 </h3>
@@ -249,7 +247,7 @@
               <section data-js="crew-section__tripulant" class="crew-section__tripulant"
                 id="mark-tabpanel" role="tabpanel" aria-labelledby="mark-tab"
               >
-                <h3>
+                <h3 class="crew-section__title">
                   <div class="crew-section__role">Mission Specialist</div>
                   Mark Shuttleworth
                 </h3>
@@ -263,7 +261,7 @@
               <section data-js="crew-section__tripulant" class="crew-section__tripulant"
                 id="victor-tabpanel" role="tabpanel" aria-labelledby="victor-tab"
               >
-                <h3>
+                <h3 class="crew-section__title">
                   <div class="crew-section__role">Pilot</div>
                   Victor Glover
                 </h3>
@@ -278,7 +276,7 @@
               <section data-js="crew-section__tripulant" class="crew-section__tripulant"
                 id="anounesh-tabpanel" role="tabpanel" aria-labelledby="anounesh-tab"
               >
-                <h3>
+                <h3 class="crew-section__title">
                   <div class="crew-section__role">Flight Engineeri</div>
                   Anousheh Ansari
                 </h3>
@@ -344,7 +342,7 @@
         </h2>
 
         <div class="technology-section__flex">
-          <div class="technology-section__inner__flex">
+          <div class="technology-section__inner-flex">
             <ul data-js="technology-section__list" class="technology-section__list" role="tablist">
               <li>
                 <button data-js="technology-section__list__button" class="technology-section__list__button technology-section__list__button--active"
@@ -411,15 +409,32 @@
           </div>
   
           <div data-js="technology-section__animation-wrapper" class="technology-section__animation-wrapper is-hidden-to-top">
-            <img data-js="technology-section__image" class="technology-section__image is-active"
-              src="src/technology/image-launch-vehicle-portrait.jpg" alt="launch vehicle's image"
-            >
-            <img data-js="technology-section__image" class="technology-section__image"
-              src="src/technology/image-spaceport-portrait.jpg" alt="spaceport's image"
-            >
-            <img data-js="technology-section__image" class="technology-section__image"
-              src="src/technology/image-space-capsule-portrait.jpg" alt="space capsule's image"
-            >
+              <div data-js="technology-section__picture-wrapper" class="technology-section__picture-wrapper is-active">
+                <picture>
+                  <source srcset="src/technology/image-launch-vehicle-landscape.jpg" media="(max-width: 980px), (max-height: 650px)">
+                  <img class="technology-section__image"
+                    src="src/technology/image-launch-vehicle-portrait.jpg" alt="launch vehicle's image"
+                  >
+                </picture>
+              </div>
+            
+              <div data-js="technology-section__picture-wrapper" class="technology-section__picture-wrapper">
+                <picture>
+                  <source srcset="src/technology/image-spaceport-landscape.jpg" media="(max-width: 980px), (max-height: 650px)">
+                  <img class="technology-section__image"
+                    src="src/technology/image-spaceport-portrait.jpg" alt="spaceport's image"
+                  >
+                </picture>
+              </div>
+
+              <div data-js="technology-section__picture-wrapper" class="technology-section__picture-wrapper">
+                <picture>
+                  <source srcset="src/technology/image-space-capsule-landscape.jpg" media="(max-width: 980px), (max-height: 650px)">
+                  <img class="technology-section__image"
+                    src="src/technology/image-space-capsule-portrait.jpg" alt="space capsule's image"
+                  >
+                </picture>
+              </div>
           </div>
         </div>
       </section>
