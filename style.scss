@@ -10,14 +10,21 @@
 
 :root {
   --black-color: rgb(11, 13, 23);
+
   --lightblue-color: rgb(208, 214, 249);
   --lightblue-color-small-opacity: rgba(208, 214, 249, 0.15);
+
   --white-color: rgb(255, 255, 255);
+
   --gray-color: gray;
+
   --gray-color-small-opacity: rgba(170, 168, 168, 0.1);
   --gray-color-line: rgba(182, 182, 182, 0.5);
   --gray-color-border: rgba(182, 182, 182, 0.3);
   --gray-color-button: rgba(128, 128, 128, 0.5);
+
+  --hamburguer-menu-color: rgba(44, 47, 54, 0.4);
+  --hamburguer-menu-color-high-opacity: rgba(44, 47, 54, 0.6);
 }
 
 
@@ -86,7 +93,7 @@ button {
   cursor: pointer;
 }
 
-image {
+img {
   display: block;   // removes the image's margin at the bottom
 }
 
@@ -201,6 +208,10 @@ image {
     }
   }
 
+  &__hamburguer-menu-closer {
+    display: none;
+  }
+
   &__list {
     display: flex;
     justify-content: space-evenly;
@@ -217,6 +228,10 @@ image {
   &__list__number {
     margin-right: 10px;
     font-weight: 600;
+  }
+
+  &__hamburguer-button {
+    display: none;
   }
 }
 
@@ -527,7 +542,7 @@ main > section {
   }
 
   &__list {
-    flex-shrink: none;
+    flex-shrink: 0;
 
     margin-right: 3vw;
 
@@ -574,7 +589,7 @@ main > section {
 
   &__vehicle {
     display: none;
-    max-width: 40vw;
+    width: 40vw;
   }
   
   &__picture-wrapper {
@@ -607,7 +622,11 @@ main > section {
 
 @media (max-width: 980px), (max-height: 650px) {  // tablet responsive
   h2 {
-    top: 110px;
+    align-self: flex-start;
+
+    margin: 0px 0px 30px 5vw;
+
+    position: static;
 
     font-size: 22px;
   }
@@ -684,6 +703,7 @@ main > section {
 
     &__flex {
       flex-direction: column;
+      justify-content: space-between;
       align-items: center;
 
       height: 100%;
@@ -693,13 +713,13 @@ main > section {
 
     &__image {
       margin: 0px;
-      width: 15vw;
+      width: 20vw;
     }
 
     &__list {
       justify-content: center;
 
-      margin: 30px 0px;
+      margin: 24px 0px;
 
       position: static;
     }
@@ -734,6 +754,10 @@ main > section {
       url('./src/crew/background-crew-tablet.jpg');
     background-position: center 70%;
 
+    h2 {
+      margin-bottom: 6px;
+    }
+
     &__flex {
       flex-direction: column;
       align-items: center;
@@ -756,7 +780,7 @@ main > section {
     }
 
     &__text {
-      margin: 16px auto;
+      margin: 16px auto 30px;
       max-width: none;
       width: 80%;
 
@@ -764,7 +788,9 @@ main > section {
     }
 
     &__list {
-      margin: 0px 0px 26px 5vw;
+      justify-content: center;
+
+      margin-bottom: 26px;
     }
 
     &__image {
@@ -782,21 +808,166 @@ main > section {
       overflow: auto;
     }
 
+    &__picture-wrapper {
+      margin-bottom: 30px;
+    }
+
     &__inner-flex {
+      flex-direction: column;
       order: 1;
     }
 
+    &__list {
+      display: flex;
+      justify-content: center;
+
+      margin: 0px;
+
+      li + li {
+        margin: 0px 0px 24px 24px;
+      }
+    }
+
+    &__terminology {
+      text-align: center;
+    }
+
+    &__vehicle {
+      margin: 0px auto 30px auto;
+      width: 70%;
+
+      h3, p {
+        text-align: center;
+      }
+    }
+
     &__image {
+      margin: 0px auto;
+      width: 100%;
+      max-width: 800px;
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .home-section__explore-button {
+    width: 21vw;
+    height: 21vw;
+
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 850px) {
+  .page-header {
+    &__navigation::before {
+      display: none;
+    }
+
+    &__list {
       width: 70vw;
     }
   }
 }
 
-@media (max-height: 590px) {    // avoid that the content get clipped to out of the element
-  .home-section__flex, .destination-section__flex {
+@media (max-width: 700px) {
+  .home-section__explore-button {
+    width: 28vw;
+    height: 28vw;
+  }
+
+  .home-section__explore-button:hover {
+    box-shadow: 0px 0px 0px 6vw var(--lightblue-color-small-opacity);
+  }
+}
+
+@media (max-width: 650px) {
+  .page-header {
+    padding: 20px 24px 0px;
+
+    &__navigation {
+      padding: 50px 0px 0px;
+      height: 100vh;
+
+      position: absolute;
+      top: 0px;
+      right: 0px;
+
+      transform: translateX(100%);
+
+      background-color: var(--hamburguer-menu-color);
+
+      transition: transform 150ms ease-out;
+
+      @supports not (backdrop-filter: blur(16px)) {
+        background-color: var(--hamburguer-menu-color-high-opacity);
+      }
+    }
+
+    &__hamburguer-menu-closer {
+      display: block;
+
+      position: absolute;
+      top: 33px;
+      right: 26px;
+    }
+
+    &__list {
+      align-items: center;
+      flex-direction: column;
+
+      li + li {
+        margin-top: 20px;
+      }
+    }
+
+    @media (hover: hover) {
+      &__list__button:hover::after {
+        transform: translateY(8px);
+      }
+    }
+    
+    @media (hover: none) {
+      &__list__button:active::after {
+        transform: translateY(8px);
+      }
+    }
+
+    &__list__button--active::after {
+      transform: translateY(8px);
+    }
+
+    &__hamburguer-button {
+      display: block;
+    }
+  }
+}
+
+@media (max-height: 590px) {
+  .home-section__flex, .destination-section__flex {   // avoid that the content get clipped to out of the element
     justify-content: flex-start;
   }
 }
+
+@media (max-width: 510px) {
+  .home-section__explore-button {
+    width: 36vw;
+    height: 36vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-section__explore-button {
+    width: 44vw;
+    height: 44vw;
+  }
+
+  .home-section__explore-button:hover {
+    box-shadow: 0px 0px 0px 8vw var(--lightblue-color-small-opacity);
+  }
+}
+
+// @media (max-width: )
 
 @media (pointer: coarse) {
   * {
