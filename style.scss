@@ -16,6 +16,8 @@
 
   --white-color: rgb(255, 255, 255);
 
+  --scrollbar-thumb-color: rgb(210, 210, 210);
+
   --gray-color: gray;
 
   --gray-color-small-opacity: rgba(170, 168, 168, 0.1);
@@ -40,24 +42,12 @@ body {
 }
 
 h2, h3, h4 {
+  word-break: break-word;
   text-transform: uppercase;
 }
 
 h3, h4 {
   font-family: 'Roboto Mono', serif;
-}
-
-h2 {
-  position: absolute;
-  top: 130px;
-  left: 5vw;
-
-  white-space: nowrap;
-  
-  font-size: 30px;
-  font-weight: 300;
-
-  letter-spacing: 4.75px;
 }
 
 h3 {
@@ -158,6 +148,30 @@ img {
   }
 }
 
+@mixin custom-scrollbar() {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+  }
+
+  @media (hover: hover) {
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--white-color);
+    }
+  }
+
+  @media (hover: none) {
+    &::-webkit-scrollbar-thumb:active {
+      background-color: var(--white-color);
+    }
+  }
+}
+
 
 .page-header {
   display: flex;
@@ -232,6 +246,30 @@ img {
 
   &__hamburguer-button {
     display: none;
+  }
+
+  &__hamburguer-menu-backdrop {
+    display: none;
+  }
+}
+
+.title {
+  display: grid;
+  grid-template-columns: auto auto;
+
+  position: absolute;
+  top: 130px;
+  left: 5vw;
+  
+  font-size: 30px;
+  font-weight: 300;
+
+  letter-spacing: 4.75px;
+
+  &__number {
+    margin-right: 20px;
+
+    color: var(--gray-color);
   }
 }
 
@@ -349,10 +387,6 @@ main > section {
 
     width: 100%;
   }
-  
-  &__title-number {
-    color: var(--gray-color)
-  }
 
   &__animation-wrapper {
     flex-shrink: 0;
@@ -385,6 +419,7 @@ main > section {
     @include option-button(4px, var(--lightblue-color), var(--white-color), 17px, 10px);
 
     color: var(--lightblue-color);
+    font-size: 20px;
 
     &.option-button--active {
       color: var(--white-color)
@@ -428,10 +463,6 @@ main > section {
   background-image:
     radial-gradient(farthest-corner at center center, transparent 50%, black 90%),
     url('./src/crew/background-crew-desktop.jpg');
-
-  &__title-number {
-    color: var(--gray-color)
-  }
 
   &__flex {
     display: flex;
@@ -477,8 +508,8 @@ main > section {
   }
 
   &__list__button {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
 
     background-color: var(--gray-color-button);
 
@@ -520,10 +551,6 @@ main > section {
   background-image:
     radial-gradient(farthest-corner at center center, transparent 50%, black 90%),
     url('./src/technology/background-technology-desktop.jpg');
-
-  &__title-number {
-    color: var(--gray-color);
-  }
 
   &__flex {
     display: flex;
@@ -621,14 +648,18 @@ main > section {
 
 
 @media (max-width: 980px), (max-height: 650px) {  // tablet responsive
-  h2 {
+  .title {
     align-self: flex-start;
 
-    margin: 0px 0px 30px 5vw;
+    margin: 0px 0px 40px 5vw;
 
     position: static;
 
     font-size: 22px;
+  }
+
+  .technology-section .title {
+    margin: 0px 0px 26px 5vw;
   }
 
   .page-header {
@@ -650,7 +681,7 @@ main > section {
   main > section, .crew-section {
     display: block;
 
-    padding: 110px 0px 0px;
+    padding: 120px 0px 0px;
   }
 
   .home-section {
@@ -660,10 +691,12 @@ main > section {
     background-position: center 60%;
 
     &__flex {
+      @include custom-scrollbar;
+
       flex-direction: column;
       justify-content: space-around;
 
-      padding-bottom: 5vh;  // overflow bar creation
+      padding: 0px 20px 5vh;  // overflow bar creation
       height: 100%;
 
       overflow: auto;
@@ -682,7 +715,9 @@ main > section {
     }
 
     &__text {
-      max-width: 60vw;
+      margin: 0px auto;
+      max-width: none;
+      width: 80%;
 
       text-align: center;
     }
@@ -702,13 +737,17 @@ main > section {
       url('./src/destination/background-destination-tablet.jpg');
 
     &__flex {
+      @include custom-scrollbar;
+
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
 
+      padding: 0px 30px;
       height: 100%;
 
-      overflow: auto;   // overflow bar creation
+      overflow-y: auto;   // overflow bar creation
+      overflow-x: hidden;
     }
 
     &__image {
@@ -754,14 +793,17 @@ main > section {
       url('./src/crew/background-crew-tablet.jpg');
     background-position: center 70%;
 
-    h2 {
-      margin-bottom: 6px;
+    .title {
+      margin-bottom: 16px;
     }
 
     &__flex {
+      @include custom-scrollbar;
+
       flex-direction: column;
       align-items: center;
 
+      padding: 0px 30px;
       height: 100%;
 
       overflow: auto;
@@ -795,12 +837,18 @@ main > section {
 
     &__image {
       margin-left: 0px;
+      width: 24vw;
+    }
+
+    &__image--small {
       width: 20vw;
     }
   }
 
   .technology-section {
     &__flex {
+      @include custom-scrollbar;
+
       flex-direction: column;
 
       height: 100%;
@@ -870,6 +918,12 @@ main > section {
   }
 }
 
+@media (max-width: 800px) {
+  .technology-section__vehicle {
+    width: 90%;
+  }
+}
+
 @media (max-width: 700px) {
   .home-section__explore-button {
     width: 28vw;
@@ -879,9 +933,13 @@ main > section {
   .home-section__explore-button:hover {
     box-shadow: 0px 0px 0px 6vw var(--lightblue-color-small-opacity);
   }
+
+  .technology-section__vehicle {
+    width: 85%;
+  }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 690px) {   // hamburguer menu styles
   .page-header {
     padding: 20px 24px 0px;
 
@@ -892,16 +950,21 @@ main > section {
       position: absolute;
       top: 0px;
       right: 0px;
+      z-index: 2;
 
       transform: translateX(100%);
 
       background-color: var(--hamburguer-menu-color);
 
-      transition: transform 150ms ease-out;
+      transition: transform 150ms ease-in-out;
 
       @supports not (backdrop-filter: blur(16px)) {
         background-color: var(--hamburguer-menu-color-high-opacity);
       }
+    }
+    
+    &__navigation--active {
+      transform: translateX(0px);
     }
 
     &__hamburguer-menu-closer {
@@ -940,6 +1003,37 @@ main > section {
     &__hamburguer-button {
       display: block;
     }
+
+    &__hamburguer-menu-backdrop {
+      display: block;
+      width: 100%;
+      height: 100vh;
+
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 1;
+
+      pointer-events: none;
+    }
+
+    &__hamburguer-menu-backdrop--active {
+      pointer-events: all;
+    }
+  }
+
+  main > section, .crew-section {
+    padding-top: 94px;
+  }
+}
+
+@media (max-width: 636px) {
+  .destination-section__image {
+    width: 25vw;
+  }
+
+  .crew-section__text {
+    width: 100%;
   }
 }
 
@@ -954,6 +1048,56 @@ main > section {
     width: 36vw;
     height: 36vw;
   }
+
+  .crew-section__image {
+    width: 30vw;
+  }
+
+  .crew-section__image--small {
+    width: 24vw;
+  }
+}
+
+@media (max-width: 480px) {   // mobile responsive
+  .home-section__title__big {
+    margin: 10px 0px;
+
+    font-size: 60px;
+    letter-spacing: 8px;
+  }
+
+  .destination-section__definitions dd {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 435px) {
+  .destination-section__definitions {
+    justify-content: space-around;
+  }
+
+  .crew-section__image {
+    width: 36vw;
+  }
+
+  .crew-section__image--small {
+    width: 28vw;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-section__text {
+    width: 100%;
+  }
+
+  .destination-section__destine {
+    margin: 0px;
+    max-width: none;
+  }
+
+  .destination-section__image {
+    width: 30vw;
+  }
 }
 
 @media (max-width: 400px) {
@@ -967,7 +1111,11 @@ main > section {
   }
 }
 
-// @media (max-width: )
+@media (max-width: 350px) {
+  .destination-section__definitions {
+    justify-content: space-between;
+  }
+}
 
 @media (pointer: coarse) {
   * {
@@ -1014,7 +1162,7 @@ main > section {
 }
 
 .is-animating {
-  animation: fade-in-and-show 350ms linear;
+  animation: fade-in-and-show 450ms linear;
 }
 
 .is-disabled {
