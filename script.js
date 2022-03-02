@@ -2,6 +2,9 @@
 
 const pageNavigationEL = document.querySelector('[data-js="page-header__navigation"]')
 const headerOptionsELs = Array.from(document.querySelectorAll('[data-js="page-header__list"] button'))
+const hamburguerButtonEL = document.querySelector('[data-js="page-header__hamburguer-button"]')
+const hamburguerMenuCloserEL = document.querySelector('[data-js="page-header__hamburguer-menu-closer"]')
+const hamburguerMenuBackdrop = document.querySelector('[data-js="page-header__hamburguer-menu-backdrop"]')
 
 const mainEL = document.querySelector('main')
 
@@ -32,6 +35,16 @@ let technologySectionCarouselIndex = 0
 
 const loadingCircleEL = document.querySelector('[data-js="loading-circle"]')
 
+
+function toggleHamburguerMenu() {
+  pageNavigationEL.classList.toggle('page-header__navigation--active')
+  hamburguerMenuBackdrop.classList.toggle('page-header__hamburguer-menu-backdrop--active')
+}
+
+function hideHamburguerMenuOnBlur() {
+  pageNavigationEL.classList.remove('page-header__navigation--active')
+  hamburguerMenuBackdrop.classList.remove('page-header__hamburguer-menu-backdrop--active')
+}
 
 function manageTabListFocus(event, tabsELs) {
   const pressedKey = event.key
@@ -69,28 +82,31 @@ function scheduleClassesRemotion(callback, time) {
 }
 
 function removeIsHiddenClass(sectionToGoIndex) {
+  const flexContainerEL = mainEL.children[sectionToGoIndex].querySelector('[class*=__flex]')
+
   if (sectionToGoIndex === 0 || sectionToGoIndex == 2) {
     scheduleClassesRemotion(() => {
-      const flexContainerEL = mainEL.children[sectionToGoIndex].querySelector('[class*=__flex]')
-  
-      flexContainerEL.classList.remove('is-hidden')
-    }, 400)
+      flexContainerEL.classList.remove('is-without-scrollbar', 'is-hidden')
+    }, 600)
   }
+
   else if (sectionToGoIndex === 1) {
     scheduleClassesRemotion(() => {
       const [firstWrapper, secondWrapper] = destinationSectionAnimationWrappersELs
-
+      
+      
       firstWrapper.classList.remove('is-hidden-to-left')
       secondWrapper.classList.remove('is-hidden-to-right')
-    }, 400)
+    }, 600)
   }
+
   else {
     scheduleClassesRemotion(() => {
       const [firstWrapper, secondWrapper] = technologySectionAnimationsWrapperELs
 
       firstWrapper.classList.remove('is-hidden')
       secondWrapper.classList.remove('is-hidden-to-top')
-    }, 400)
+    }, 600)
   }
 }
 
@@ -198,8 +214,13 @@ function readyPage() {
   scheduleClassesRemotion(() => homeSectionFlexEL.classList.remove('is-hidden'), 2000)
 }
 
-
 pageNavigationEL.addEventListener('keydown', event => manageTabListFocus(event, headerOptionsELs))
+
+hamburguerButtonEL.addEventListener('click', toggleHamburguerMenu)
+
+hamburguerMenuCloserEL.addEventListener('click', toggleHamburguerMenu)
+
+hamburguerMenuBackdrop.addEventListener('click', hideHamburguerMenuOnBlur)
 
 destinationSectionOptionsListEL.addEventListener('keydown', event => manageTabListFocus(event, destinationSectionOptionsELs))
 
@@ -236,6 +257,4 @@ tecnologySectionOptionsELs.forEach((value, index) => {
 
 window.addEventListener('resize', () => changeToOtherSection(getCurrentSectionIndex()))
 
-
-  mainEL.ariaBusy="false"
 window.addEventListener('load', readyPage)
