@@ -23,7 +23,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><g fill="none" fill-rule="evenodd"><circle cx="24" cy="24" r="24" fill="#FFF"/><path fill="#0B0D17" d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"/></g></svg>
 
       <nav data-js="page-header__navigation" class="page-header__navigation is-disabled" role="tabpanel">
-        <button class="page-header__hamburguer-menu-closer">
+        <button data-js="page-header__hamburguer-menu-closer" class="page-header__hamburguer-menu-closer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21"><g fill="#D0D6F9" fill-rule="evenodd"><path d="M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z"/><path d="M.454 17.925L17.424.955l2.122 2.12-16.97 16.97z"/></g></svg>
         </button>
 
@@ -59,9 +59,11 @@
         </ol>
       </nav>
 
-      <button class="page-header__hamburguer-button">
+      <button data-js="page-header__hamburguer-button" class="page-header__hamburguer-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21"><g fill="#D0D6F9" fill-rule="evenodd"><path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z"/></g></svg>
       </button>
+
+      <div data-js="page-header__hamburguer-menu-backdrop" class="page-header__hamburguer-menu-backdrop"></div>
     </header>
 
     <main aria-busy="true" aria-describedby="loading-circle">
@@ -92,8 +94,8 @@
         id="destination-section" role="tabpanel" aria-labelledby="destination-tab"
       >
         <div class="destination-section__flex">
-          <h2>
-            <span class="destination-section__title-number" aria-hidden="true">01</span> pick your destination
+          <h2 class="title">
+            <span class="title__number" aria-hidden="true">01</span> pick your destination
           </h2>
 
           <div data-js="destination-section__animation-wrapper" class="destination-section__animation-wrapper is-hidden-to-left">
@@ -149,7 +151,7 @@
               >
                 <h3 class="destination-section__title">moon</h3>
                 <p class="destination-section__text">
-                  regain perspective and come back refreshed. While you’re there, take in some history
+                  Regain perspective and come back refreshed. While you’re there, take in some history
                   by visiting the Luna 2 and Apollo 11 landing sites.
                 </p>
                 <dl class="destination-section__definitions">
@@ -232,8 +234,8 @@
         id="crew-section" role="tabpanel" aria-labelledby="crew-tab"
       >
         <div class="crew-section__flex is-hidden">
-          <h2>
-            <span class="crew-section__title-number" aria-hidden="true">02</span> meet your crew
+          <h2 class="title">
+            <span class="title__number" aria-hidden="true">02</span> meet your crew
           </h2>
 
           <div>
@@ -345,8 +347,8 @@
         id="technology-section" role="tabpanel" aria-labelledby="technology-tab"
       >
         <div class="technology-section__flex">
-          <h2>
-            <span class="technology-section__title-number" aria-hidden="true">03</span>
+          <h2 class="title">
+            <span class="title__number" aria-hidden="true">03</span>
             space launch 101
           </h2>
 
