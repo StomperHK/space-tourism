@@ -190,6 +190,7 @@ main {
 
 main > section {
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   flex-shrink: 0;
   padding: 10vh 15vh;
@@ -207,6 +208,7 @@ main > section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1400px;
   width: 100%;
   transition: transform 200ms ease-out, opacity 200ms ease-out;
 }
@@ -233,6 +235,8 @@ main > section {
 }
 .home-section__explore-button {
   flex-shrink: 0;
+  max-width: 300px;
+  max-height: 300px;
   width: 20vw;
   height: 20vw;
   background-color: var(--white-color);
@@ -262,6 +266,7 @@ main > section {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  max-width: 1400px;
   width: 100%;
 }
 .destination-section__animation-wrapper {
@@ -271,7 +276,8 @@ main > section {
 .destination-section__image {
   display: none;
   margin-left: 3vw;
-  width: 25vw;
+  max-width: 300px;
+  width: 20vw;
   transition: transform 150ms ease-out;
 }
 .destination-section__list {
@@ -362,8 +368,9 @@ main > section {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  max-width: 1400px;
   width: 100%;
-  transition: transform 200ms ease-out, opacity 200ms ease-out;
+  transition: opacity 300ms ease-out;
 }
 .crew-section__flex > div {
   flex-shrink: 0;
@@ -411,9 +418,11 @@ main > section {
 .crew-section__image {
   display: none;
   margin-left: 3vw;
+  max-width: 350px;
   width: 27vw;
 }
 .crew-section__image--small {
+  max-width: 320px;
   width: 23vw;
 }
 
@@ -425,6 +434,7 @@ main > section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1400px;
   width: 100%;
 }
 .technology-section__inner-flex {
@@ -475,6 +485,7 @@ main > section {
   display: none;
 }
 .technology-section__image {
+  max-width: 420px;
   width: 30vw;
 }
 
@@ -492,6 +503,11 @@ main > section {
   animation: rotate-loading-circle 800ms ease-in-out infinite;
 }
 
+@media (max-width: 1026px) and (min-width: 981px) {
+  .technology-section__flex {
+    align-items: flex-start;
+  }
+}
 @media (max-width: 980px), (max-height: 650px) {
   .title {
     align-self: flex-start;
@@ -899,6 +915,11 @@ main > section {
     padding-top: 94px;
   }
 }
+@media (max-height: 650px) {
+  .home-section__flex, .destination-section__flex {
+    justify-content: flex-start;
+  }
+}
 @media (max-width: 636px) {
   .destination-section__image {
     width: 25vw;
@@ -906,11 +927,6 @@ main > section {
 
   .crew-section__text {
     width: 100%;
-  }
-}
-@media (max-height: 590px) {
-  .home-section__flex, .destination-section__flex {
-    justify-content: flex-start;
   }
 }
 @media (max-width: 510px) {
@@ -1021,6 +1037,10 @@ main > section {
 .is-disabled {
   opacity: 0;
   pointer-events: none;
+}
+
+.is-invisible {
+  opacity: 0;
 }
 
 .is-hidden {

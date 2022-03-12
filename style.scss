@@ -281,6 +281,7 @@ main {
 
 main > section {
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   flex-shrink: 0;
 
@@ -305,6 +306,7 @@ main > section {
     justify-content: space-between;
     align-items: center;
 
+    max-width: 1400px;
     width: 100%;
 
     transition: transform 200ms ease-out, opacity 200ms ease-out;
@@ -343,6 +345,8 @@ main > section {
   &__explore-button {
     flex-shrink: 0;
 
+    max-width: 300px;
+    max-height: 300px;
     width: 20vw;
     height: 20vw;
 
@@ -385,6 +389,7 @@ main > section {
     justify-content: space-around;
     align-items: flex-start;
 
+    max-width: 1400px;
     width: 100%;
   }
 
@@ -397,7 +402,8 @@ main > section {
   &__image {
     display: none;
     margin-left: 3vw;
-    width: 25vw;
+    max-width: 300px;
+    width: 20vw;
 
     transition: transform 150ms ease-out;
   }
@@ -469,9 +475,10 @@ main > section {
     justify-content: space-between;
     align-items: flex-end;
 
+    max-width: 1400px;
     width: 100%;
 
-    transition: transform 200ms ease-out, opacity 200ms ease-out;
+    transition: opacity 300ms ease-out;
 
     & > div {
       flex-shrink: 0;
@@ -537,9 +544,11 @@ main > section {
   &__image {
     display: none;
     margin-left: 3vw;
+    max-width: 350px;
     width: 27vw;
 
     &--small {
+      max-width: 320px;
       width: 23vw;
     }
   }
@@ -557,6 +566,7 @@ main > section {
     justify-content: space-between;
     align-items: center;
 
+    max-width: 1400px;
     width: 100%;
   }
 
@@ -624,6 +634,7 @@ main > section {
   }
 
   &__image {
+    max-width: 420px;
     width: 30vw;
   }
 }
@@ -646,6 +657,12 @@ main > section {
   animation: rotate-loading-circle 800ms ease-in-out infinite;
 }
 
+
+@media (max-width: 1026px) and (min-width: 981px) {
+  .technology-section__flex {
+    align-items: flex-start;
+  }
+}
 
 @media (max-width: 980px), (max-height: 650px) {  // tablet responsive
   .title {
@@ -1027,6 +1044,12 @@ main > section {
   }
 }
 
+@media (max-height: 650px) {
+  .home-section__flex, .destination-section__flex {   // avoid that the content get clipped to out of the element
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 636px) {
   .destination-section__image {
     width: 25vw;
@@ -1037,11 +1060,6 @@ main > section {
   }
 }
 
-@media (max-height: 590px) {
-  .home-section__flex, .destination-section__flex {   // avoid that the content get clipped to out of the element
-    justify-content: flex-start;
-  }
-}
 
 @media (max-width: 510px) {
   .home-section__explore-button {
@@ -1058,7 +1076,7 @@ main > section {
   }
 }
 
-@media (max-width: 480px) {   // mobile responsive
+@media (max-width: 480px) {   // cellphone responsive
   .home-section__title__big {
     margin: 10px 0px;
 
@@ -1169,6 +1187,10 @@ main > section {
   opacity: 0;
 
   pointer-events: none;
+}
+
+.is-invisible {
+  opacity: 0;
 }
 
 .is-hidden {
