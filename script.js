@@ -60,6 +60,13 @@ function manageTabListFocus(event, tabsELs) {
   }
 }
 
+function rotatePageCarousel(sectionToGoIndex) {
+  const viewportWidth = document.body.clientWidth
+  const amountToTransform = sectionToGoIndex ? viewportWidth * sectionToGoIndex : 0
+
+  mainEL.style.transform = `translateX(-${amountToTransform}px)`
+}
+
 function changeAriaSelectedToFalse(value) {
   value.ariaSelected = 'false'
 }
@@ -84,19 +91,18 @@ function scheduleClassesRemotion(callback, time) {
 function removeIsHiddenClass(sectionToGoIndex) {
   const flexContainerEL = mainEL.children[sectionToGoIndex].querySelector('[class*=__flex]')
 
-  if (sectionToGoIndex === 0 || sectionToGoIndex == 2) {
-    scheduleClassesRemotion(() => {
-      flexContainerEL.classList.remove('is-without-scrollbar', 'is-hidden')
-    }, 600)
-  }
-
-  else if (sectionToGoIndex === 1) {
+  if (sectionToGoIndex === 1) {
     scheduleClassesRemotion(() => {
       const [firstWrapper, secondWrapper] = destinationSectionAnimationWrappersELs
       
-      
       firstWrapper.classList.remove('is-hidden-to-left')
       secondWrapper.classList.remove('is-hidden-to-right')
+    }, 600)
+  }
+
+  else if (sectionToGoIndex === 2) {
+    scheduleClassesRemotion(() => {
+      flexContainerEL.classList.remove('is-invisible')
     }, 600)
   }
 
@@ -121,10 +127,7 @@ function preventExternalButtonsFromReceivingFocus(sectionToGoIndex) {
 preventExternalButtonsFromReceivingFocus(0)
 
 function changeToOtherSection(sectionToGoIndex) {
-  const viewportWidth = document.body.clientWidth
-  const amountToTransform = sectionToGoIndex ? viewportWidth * sectionToGoIndex : 0
-
-  mainEL.style.transform = `translateX(-${amountToTransform}px)`
+  rotatePageCarousel(sectionToGoIndex)
 
   changeAriaSelectedTab(headerOptionsELs, sectionToGoIndex)
 
@@ -214,6 +217,7 @@ function readyPage() {
   scheduleClassesRemotion(() => homeSectionFlexEL.classList.remove('is-hidden'), 2000)
 }
 
+
 pageNavigationEL.addEventListener('keydown', event => manageTabListFocus(event, headerOptionsELs))
 
 hamburguerButtonEL.addEventListener('click', toggleHamburguerMenu)
@@ -255,6 +259,6 @@ tecnologySectionOptionsELs.forEach((value, index) => {
   value.addEventListener('click', () => moveCarousel(carouselItems, carouselInfos))
 })
 
-window.addEventListener('resize', () => changeToOtherSection(getCurrentSectionIndex()))
+window.addEventListener('resize', () => rotatePageCarousel(getCurrentSectionIndex()))
 
 window.addEventListener('load', readyPage)
