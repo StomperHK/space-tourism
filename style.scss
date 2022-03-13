@@ -26,9 +26,14 @@
   --gray-color-button: rgba(128, 128, 128, 0.5);
 
   --hamburguer-menu-color: rgba(44, 47, 54, 0.4);
-  --hamburguer-menu-color-high-opacity: rgba(44, 47, 54, 0.6);
+  --hamburguer-menu-color-high-opacity: rgba(44, 47, 54, 0.8);
+  --hamburguer-menu-backdrop-color: rgba(0, 0, 0, 0.5);
 }
 
+
+html {
+  overflow: hidden;
+}
 
 body {
   overflow: hidden;
@@ -81,6 +86,10 @@ button {
   background-color: transparent;
 
   cursor: pointer;
+
+  @media (pointer: coarse) {
+    cursor: default;
+  }
 }
 
 img {
@@ -117,11 +126,6 @@ img {
     opacity: 0;
   
     transition: transform 150ms ease-out, opacity linear 150ms;
-  }
-  
-  &:hover::after {
-    transform: translateY($final-transform);
-    opacity: 1;
   }
 
   &--active {
@@ -668,15 +672,16 @@ main > section {
   .title {
     align-self: flex-start;
 
-    margin: 0px 0px 40px 5vw;
+    margin: 0px 20px 40px 30px;
 
     position: static;
 
     font-size: 22px;
+    line-height: 35px;
   }
 
   .technology-section .title {
-    margin: 0px 0px 26px 5vw;
+    margin: 0px 20px 26px 30px;
   }
 
   .page-header {
@@ -760,11 +765,14 @@ main > section {
       justify-content: space-between;
       align-items: center;
 
-      padding: 0px 30px;
       height: 100%;
 
       overflow-y: auto;   // overflow bar creation
       overflow-x: hidden;
+
+      & > div:nth-child(3) {
+        padding: 0px 30px;
+      }
     }
 
     &__image {
@@ -820,13 +828,12 @@ main > section {
       flex-direction: column;
       align-items: center;
 
-      padding: 0px 30px;
       height: 100%;
 
       overflow: auto;
 
-      & > div:first-child {
-        width: 100%;
+      & > div:nth-child(2) {
+        padding: 0px 30px;
       }
     }
 
@@ -971,13 +978,11 @@ main > section {
 
       transform: translateX(100%);
 
-      background-color: var(--hamburguer-menu-color);
+      background-color: var(--hamburguer-menu-color-high-opacity);
 
-      transition: transform 150ms ease-in-out;
+      backdrop-filter: initial;
 
-      @supports not (backdrop-filter: blur(16px)) {
-        background-color: var(--hamburguer-menu-color-high-opacity);
-      }
+      transition: transform 200ms ease-in-out;
     }
     
     &__navigation--active {
@@ -1031,10 +1036,18 @@ main > section {
       left: 0px;
       z-index: 1;
 
+      background-color: var(--hamburguer-menu-backdrop-color);
+
+      opacity: 0;
+
       pointer-events: none;
+
+      transition: opacity 200ms ease-in-out;
     }
 
     &__hamburguer-menu-backdrop--active {
+      opacity: 1;
+
       pointer-events: all;
     }
   }

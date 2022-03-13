@@ -18,7 +18,12 @@
   --gray-color-border: rgba(182, 182, 182, 0.3);
   --gray-color-button: rgba(128, 128, 128, 0.5);
   --hamburguer-menu-color: rgba(44, 47, 54, 0.4);
-  --hamburguer-menu-color-high-opacity: rgba(44, 47, 54, 0.6);
+  --hamburguer-menu-color-high-opacity: rgba(44, 47, 54, 0.8);
+  --hamburguer-menu-backdrop-color: rgba(0, 0, 0, 0.5);
+}
+
+html {
+  overflow: hidden;
 }
 
 body {
@@ -64,6 +69,11 @@ button {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+@media (pointer: coarse) {
+  button {
+    cursor: default;
+  }
 }
 
 img {
@@ -133,10 +143,6 @@ img {
   background-color: var(--white-color);
   opacity: 0;
   transition: transform 150ms ease-out, opacity linear 150ms;
-}
-.page-header__list__button:hover::after {
-  transform: translateY(17px);
-  opacity: 1;
 }
 .page-header__list__button--active {
   color: var(--white-color);
@@ -310,10 +316,6 @@ main > section {
   background-color: var(--white-color);
   opacity: 0;
   transition: transform 150ms ease-out, opacity linear 150ms;
-}
-.destination-section__list__button:hover::after {
-  transform: translateY(10px);
-  opacity: 1;
 }
 .destination-section__list__button--active {
   color: var(--white-color);
@@ -511,13 +513,14 @@ main > section {
 @media (max-width: 980px), (max-height: 650px) {
   .title {
     align-self: flex-start;
-    margin: 0px 0px 40px 5vw;
+    margin: 0px 20px 40px 30px;
     position: static;
     font-size: 22px;
+    line-height: 35px;
   }
 
   .technology-section .title {
-    margin: 0px 0px 26px 5vw;
+    margin: 0px 20px 26px 30px;
   }
 
   .page-header {
@@ -604,7 +607,6 @@ main > section {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 30px;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -624,6 +626,11 @@ main > section {
 @media (max-width: 980px) and (hover: none), (max-height: 650px) and (hover: none) {
   .destination-section__flex::-webkit-scrollbar-thumb:active {
     background-color: var(--white-color);
+  }
+}
+@media (max-width: 980px), (max-height: 650px) {
+  .destination-section__flex > div:nth-child(3) {
+    padding: 0px 30px;
   }
 }
 @media (max-width: 980px), (max-height: 650px) {
@@ -675,7 +682,6 @@ main > section {
     scrollbar-width: thin;
     flex-direction: column;
     align-items: center;
-    padding: 0px 30px;
     height: 100%;
     overflow: auto;
   }
@@ -697,8 +703,8 @@ main > section {
   }
 }
 @media (max-width: 980px), (max-height: 650px) {
-  .crew-section__flex > div:first-child {
-    width: 100%;
+  .crew-section__flex > div:nth-child(2) {
+    padding: 0px 30px;
   }
 }
 @media (max-width: 980px), (max-height: 650px) {
@@ -848,13 +854,9 @@ main > section {
     right: 0px;
     z-index: 2;
     transform: translateX(100%);
-    background-color: var(--hamburguer-menu-color);
-    transition: transform 150ms ease-in-out;
-  }
-  @supports not (backdrop-filter: blur(16px)) {
-    .page-header__navigation {
-      background-color: var(--hamburguer-menu-color-high-opacity);
-    }
+    background-color: var(--hamburguer-menu-color-high-opacity);
+    backdrop-filter: initial;
+    transition: transform 200ms ease-in-out;
   }
   .page-header__navigation--active {
     transform: translateX(0px);
@@ -902,11 +904,15 @@ main > section {
     top: 0px;
     left: 0px;
     z-index: 1;
+    background-color: var(--hamburguer-menu-backdrop-color);
+    opacity: 0;
     pointer-events: none;
+    transition: opacity 200ms ease-in-out;
   }
 }
 @media (max-width: 690px) {
   .page-header__hamburguer-menu-backdrop--active {
+    opacity: 1;
     pointer-events: all;
   }
 }
