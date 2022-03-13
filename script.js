@@ -41,7 +41,7 @@ function toggleHamburguerMenu() {
   hamburguerMenuBackdrop.classList.toggle('page-header__hamburguer-menu-backdrop--active')
 }
 
-function hideHamburguerMenuOnBlur() {
+function hideHamburguerMenu() {
   pageNavigationEL.classList.remove('page-header__navigation--active')
   hamburguerMenuBackdrop.classList.remove('page-header__hamburguer-menu-backdrop--active')
 }
@@ -136,6 +136,8 @@ function changeToOtherSection(sectionToGoIndex) {
   removeIsHiddenClass(sectionToGoIndex)
 
   preventExternalButtonsFromReceivingFocus(sectionToGoIndex)
+
+  setTimeout(hideHamburguerMenu, 300)
 }
 
 function getCarouselItemIndex(carouselIndex) {
@@ -224,7 +226,7 @@ hamburguerButtonEL.addEventListener('click', toggleHamburguerMenu)
 
 hamburguerMenuCloserEL.addEventListener('click', toggleHamburguerMenu)
 
-hamburguerMenuBackdrop.addEventListener('click', hideHamburguerMenuOnBlur)
+hamburguerMenuBackdrop.addEventListener('click', hideHamburguerMenu)
 
 destinationSectionOptionsListEL.addEventListener('keydown', event => manageTabListFocus(event, destinationSectionOptionsELs))
 
