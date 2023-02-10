@@ -56,7 +56,7 @@ h3, h4 {
 }
 
 h3 {
-  margin: 16px 0px;
+  margin: 0px 0px 3vh 0px;
 
   font-size: 38px;
 
@@ -156,7 +156,7 @@ img {
   scrollbar-width: thin;
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -182,7 +182,7 @@ img {
   justify-content: space-between;
   align-items: center;
 
-  padding: 40px 0px 0px 55px;
+  padding: 6vh 0px 0px 7vw;
   width: 100%;
 
   position: fixed;
@@ -191,7 +191,7 @@ img {
   z-index: 2;
 
   &__navigation {
-    padding: 16px 30px;
+    padding: 16px 30px; 
 
     position: relative;
 
@@ -421,7 +421,7 @@ main > section {
     list-style: none;
 
     li + li {
-      margin-left: 26px;
+      margin-left: 2.5vw;
     }
   }
 
@@ -443,14 +443,14 @@ main > section {
 
   &__text {
     border-bottom: 1px solid var(--gray-color-border);
-    padding-bottom: 36px;
+    padding-bottom: 6vh;
   }
 
   &__definitions {
     display: flex;
     justify-content: space-between;
 
-    margin-top: 36px;
+    margin-top: 6vh;
     max-width: 400px;
 
     text-transform: uppercase;
@@ -494,7 +494,7 @@ main > section {
   }
 
   &__role {
-    margin-bottom: 10px;
+    margin-bottom: 2vh;
 
     color: var(--gray-color);
 
@@ -502,7 +502,7 @@ main > section {
   }
 
   &__text {
-    margin: 30px 0px 90px;
+    margin: 4vh 0px 12vh;
     max-width: 35vw;
   }
 
@@ -514,7 +514,7 @@ main > section {
     list-style: none;
 
     li + li {
-      margin-left: 20px;
+      margin-left: 2vw;
     }
   }
 
@@ -590,7 +590,7 @@ main > section {
     list-style: none;
 
     li + li {
-      margin-top: 16px;
+      margin-top: 3vh;
     }
   }
 
@@ -661,18 +661,11 @@ main > section {
   animation: rotate-loading-circle 800ms ease-in-out infinite;
 }
 
-
-@media (max-width: 1026px) and (min-width: 981px) {
-  .technology-section__flex {
-    align-items: flex-start;
-  }
-}
-
 @media (max-width: 980px), (max-height: 650px) {  // tablet responsive
   .title {
     align-self: flex-start;
 
-    margin: 0px 20px 40px 30px;
+    margin: 0px 2vw 4vh 6vw;
 
     position: static;
 
@@ -680,12 +673,8 @@ main > section {
     line-height: 35px;
   }
 
-  .technology-section .title {
-    margin: 0px 20px 26px 30px;
-  }
-
   .page-header {
-    padding: 16px 0px 0px 24px;
+    padding: 2vh 0px 0px 2.5vw;
 
     &__navigation::before {
       width: 45%;
@@ -703,7 +692,7 @@ main > section {
   main > section, .crew-section {
     display: block;
 
-    padding: 120px 0px 0px;
+    padding: calc(6vh + 74px) 0px 0px;
   }
 
   .home-section {
@@ -718,13 +707,13 @@ main > section {
       flex-direction: column;
       justify-content: space-around;
 
-      padding: 0px 20px 5vh;  // overflow bar creation
+      padding: 0px 20px 100px;  // overflow bar creation
       height: 100%;
 
       overflow: auto;
     }
 
-    &__title {
+    &__title {  
       text-align: center;
 
       &__small {
@@ -745,7 +734,7 @@ main > section {
     }
 
     &__explore-button {
-      margin-top: 50px;
+      margin-top: 7vh;
       width: 18vw;
       height: 18vw;
 
@@ -783,7 +772,7 @@ main > section {
     &__list {
       justify-content: center;
 
-      margin: 24px 0px;
+      margin: 3.5vh 0px;
 
       position: static;
     }
@@ -807,7 +796,7 @@ main > section {
     &__definitions {
       justify-content: space-evenly;
 
-      margin: 20px 0px;
+      margin: 4vh 0px 70px;   // I'am using 70px because the toolbar of the Opera Android Browser has this very same height
       max-width: none;
     }
   }
@@ -846,7 +835,7 @@ main > section {
     }
 
     &__text {
-      margin: 16px auto 30px;
+      margin: 2vh auto 3.5vh;
       max-width: none;
       width: 80%;
 
@@ -896,7 +885,7 @@ main > section {
       margin: 0px;
 
       li + li {
-        margin: 0px 0px 24px 24px;
+        margin: 0px 0px 3vh 5vw;
       }
     }
 
@@ -905,7 +894,7 @@ main > section {
     }
 
     &__vehicle {
-      margin: 0px auto 30px auto;
+      margin: 0px auto 70px auto;
       width: 70%;
 
       h3, p {
@@ -963,9 +952,13 @@ main > section {
   }
 }
 
-@media (max-width: 690px) {   // hamburguer menu styles
+@media (max-width: 730px) {   // hamburguer menu styles
   .page-header {
-    padding: 20px 24px 0px;
+    padding: 2vh 3vw 0px;
+
+    & > svg {
+      transform: scale(0.8);
+    }
 
     &__navigation {
       padding: 50px 0px 0px;
@@ -1002,7 +995,7 @@ main > section {
       flex-direction: column;
 
       li + li {
-        margin-top: 20px;
+        margin-top: 2.5vh;
       }
     }
 
@@ -1053,7 +1046,7 @@ main > section {
   }
 
   main > section, .crew-section {
-    padding-top: 94px;
+    padding-top: calc(4vh + 47px);
   }
 }
 
@@ -1091,10 +1084,14 @@ main > section {
 
 @media (max-width: 480px) {   // cellphone responsive
   .home-section__title__big {
-    margin: 10px 0px;
+    margin: 2vh 0px;
 
     font-size: 60px;
     letter-spacing: 8px;
+  }
+
+  .destination-section__list li + li {
+    margin-left: 5vw
   }
 
   .destination-section__definitions dd {
