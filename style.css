@@ -122,7 +122,6 @@ img {
   display: flex;
   justify-content: space-evenly;
   width: 50vw;
-  list-style: none;
 }
 .page-header__list__button {
   padding: 10px 0px;
@@ -178,7 +177,7 @@ img {
   display: grid;
   grid-template-columns: auto auto;
   position: absolute;
-  top: 130px;
+  top: calc(9vh + 73px);
   left: 5vw;
   font-size: 30px;
   font-weight: 300;
@@ -289,10 +288,9 @@ main > section {
 .destination-section__list {
   display: flex;
   position: absolute;
-  top: 32vh;
-  list-style: none;
+  transform: translateY(-300%);
 }
-.destination-section__list li + li {
+.destination-section__list button + button {
   margin-left: 2.5vw;
 }
 .destination-section__list__button {
@@ -392,9 +390,8 @@ main > section {
 .crew-section__list {
   display: flex;
   margin-bottom: 5vh;
-  list-style: none;
 }
-.crew-section__list li + li {
+.crew-section__list button + button {
   margin-left: 2vw;
 }
 .crew-section__list__button {
@@ -448,12 +445,12 @@ main > section {
 .technology-section__list {
   flex-shrink: 0;
   margin-right: 3vw;
-  list-style: none;
 }
-.technology-section__list li + li {
+.technology-section__list button + button {
   margin-top: 3vh;
 }
 .technology-section__list__button {
+  display: block;
   border: 2px solid var(--gray-color-button);
   width: 50px;
   height: 50px;
@@ -505,6 +502,31 @@ main > section {
   animation: rotate-loading-circle 800ms ease-in-out infinite;
 }
 
+@media (min-height: 940px) {
+  .home-section, .destination-section, .technology-section {
+    padding-bottom: 15vh;
+  }
+  .crew-section__list {
+    margin-bottom: 10vh;
+  }
+  .crew-section__image {
+    max-width: 400px;
+  }
+}
+@media (min-width: 1580px) and (min-height: 651px) {
+  .home-section__text {
+    max-width: 650px;
+  }
+  .destination-section__destine {
+    max-width: 500px;
+  }
+  .crew-section__flex > div {
+    max-width: 550px;
+  }
+  .technology-section__vehicle {
+    max-width: 650px;
+  }
+}
 @media (max-width: 980px), (max-height: 650px) {
   .title {
     align-self: flex-start;
@@ -631,6 +653,7 @@ main > section {
     justify-content: center;
     margin: 3.5vh 0px;
     position: static;
+    transform: none;
   }
 }
 @media (max-width: 980px), (max-height: 650px) {
@@ -770,7 +793,7 @@ main > section {
     justify-content: center;
     margin: 0px;
   }
-  .technology-section__list li + li {
+  .technology-section__list button + button {
     margin: 0px 0px 3vh 5vw;
   }
 }
@@ -859,7 +882,7 @@ main > section {
     align-items: center;
     flex-direction: column;
   }
-  .page-header__list li + li {
+  .page-header__list button + button {
     margin-top: 2.5vh;
   }
 }
@@ -940,7 +963,7 @@ main > section {
     font-size: 60px;
     letter-spacing: 8px;
   }
-  .destination-section__list li + li {
+  .destination-section__list button + button {
     margin-left: 5vw;
   }
   .destination-section__definitions dd {
