@@ -22,41 +22,32 @@
     <header class="page-header">
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><g fill="none" fill-rule="evenodd"><circle cx="24" cy="24" r="24" fill="#FFF"/><path fill="#0B0D17" d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"/></g></svg>
 
-      <nav data-js="page-header__navigation" class="page-header__navigation is-disabled" role="tabpanel">
+      <nav data-js="page-header__navigation" class="page-header__navigation is-disabled">
         <button data-js="page-header__hamburguer-menu-closer" class="page-header__hamburguer-menu-closer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21"><g fill="#D0D6F9" fill-rule="evenodd"><path d="M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z"/><path d="M.454 17.925L17.424.955l2.122 2.12-16.97 16.97z"/></g></svg>
         </button>
-
-        <ol data-js="page-header__list" class="page-header__list">
-          <li>
-            <button class="page-header__list__button page-header__list__button--active"
-              id="home-tab" role="tab" aria-controls="home-section" aria-selected="true"
-            >
-              <span class="page-header__list__number" aria-hidden="true">00</span> home
-            </button>
-          </li>
-          <li> 
-            <button class="page-header__list__button"
-              id="destination-tab" role="tab" aria-controls="destination-section" aria-selected="false"
-            >
-              <span class="page-header__list__number" aria-hidden="true">01</span> destination
-            </button>
-          </li>
-          <li>
-            <button class="page-header__list__button"
-              id="crew-tab" role="tab" aria-controls="crew-section" aria-selected="false"
-            >
-              <span class="page-header__list__number" aria-hidden="true">02</span> crew
-            </button>
-          </li>
-          <li>
-            <button class="page-header__list__button"
-              id="technology-tab" role="tab" aria-controls="technology-section" aria-selected="false"
-            >
-              <span class="page-header__list__number" aria-hidden="true">03</span> technology
-            </button>
-          </li>
-        </ol>
+        <div data-js="page-header__list" class="page-header__list">
+          <button class="page-header__list__button page-header__list__button--active"
+            id="home-tab" role="tab" aria-controls="home-section" aria-selected="true"
+          >
+            <span class="page-header__list__number" aria-hidden="true">00</span> home
+          </button>
+          <button class="page-header__list__button"
+            id="destination-tab" role="tab" aria-controls="destination-section" aria-selected="false"
+          >
+            <span class="page-header__list__number" aria-hidden="true">01</span> destination
+          </button>
+          <button class="page-header__list__button"
+            id="crew-tab" role="tab" aria-controls="crew-section" aria-selected="false"
+          >
+            <span class="page-header__list__number" aria-hidden="true">02</span> crew
+          </button>
+          <button class="page-header__list__button"
+            id="technology-tab" role="tab" aria-controls="technology-section" aria-selected="false"
+          >
+            <span class="page-header__list__number" aria-hidden="true">03</span> technology
+          </button>
+        </div>
       </nav>
 
       <button data-js="page-header__hamburguer-button" class="page-header__hamburguer-button">
@@ -114,36 +105,28 @@
           </div>
 
           <div>
-            <ul data-js="destination-section__list" class="destination-section__list" role="tablist">
-              <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button destination-section__list__button--active"
-                  id="moon-tab" role="tab" aria-controls="moon-tabpanel" aria-selected="true"
-                >
-                  moon
-                </button>
-              </li>
-              <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button"
-                  id="mars-tab" role="tab" aria-controls="mars-tabpanel" aria-selected="false"
-                >
-                  mars
-                </button>
-              </li>
-              <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button"
-                  id="europa-tab" role="tab" aria-controls="europa-tabpanel" aria-selected="false"
-                >
-                  europa
-                </button>
-              </li>
-              <li>
-                <button data-js="destination-section__list__button" class="destination-section__list__button"
-                  id="titan-tab" role="tab" aria-controls="titan-tabpanel" aria-selected="false"
-                >
-                  titan
-                </button>
-              </li>
-            </ul>
+            <div data-js="destination-section__list" class="destination-section__list" role="tablist">
+              <button data-js="destination-section__list__button" class="destination-section__list__button destination-section__list__button--active"
+                id="moon-tab" role="tab" aria-controls="moon-tabpanel" aria-selected="true"
+              >
+                moon
+              </button>
+              <button data-js="destination-section__list__button" class="destination-section__list__button"
+                id="mars-tab" role="tab" aria-controls="mars-tabpanel" aria-selected="false"
+              >
+                mars
+              </button>
+              <button data-js="destination-section__list__button" class="destination-section__list__button"
+                id="europa-tab" role="tab" aria-controls="europa-tabpanel" aria-selected="false"
+              >
+                europa
+              </button>
+              <button data-js="destination-section__list__button" class="destination-section__list__button"
+                id="titan-tab" role="tab" aria-controls="titan-tabpanel" aria-selected="false"
+              >
+                titan
+              </button>
+            </div>
 
             <div data-js="destination-section__animation-wrapper" class="destination-section__animation-wrapper is-hidden-to-right">
               <section data-js="destination-section__destine" class="destination-section__destine is-active"
@@ -298,32 +281,24 @@
               </section>
             </div>
 
-            <ul data-js="crew-section__list" class="crew-section__list" role="tablsit">
-              <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button crew-section__list__button--active"
-                  id="douglas-tab" role="tab" aria-controls="douglas-tabpanel" aria-label="douglas tripulant" aria-selected="true"
-                >
-                </button>
-              </li>
-              <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button" 
-                  id="mark-tab" role="tab" aria-controls="mark-tabpanel" aria-label="mark tripulant" aria-selected="false"
-                >
-                </button>
-              </li>
-              <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button" 
-                  id="victor-tab" role="tab" aria-controls="victor-tabpanel" aria-label="victor tripulant" aria-selected="false"
-                >
-                </button>
-              </li>
-              <li>
-                <button data-js="crew-section__list__button" class="crew-section__list__button"
-                  id="anounesh-tab" role="tab" aria-controls="anounesh-tabpanel" aria-label="anounesh tripulant" aria-selected="false"
-                >
-                </button>
-              </li>
-            </ul>
+            <div data-js="crew-section__list" class="crew-section__list" role="tablist">
+              <button data-js="crew-section__list__button" class="crew-section__list__button crew-section__list__button--active"
+                id="douglas-tab" role="tab" aria-controls="douglas-tabpanel" aria-label="douglas tripulant" aria-selected="true"
+              >
+              </button>
+              <button data-js="crew-section__list__button" class="crew-section__list__button" 
+                id="mark-tab" role="tab" aria-controls="mark-tabpanel" aria-label="mark tripulant" aria-selected="false"
+              >
+              </button>
+              <button data-js="crew-section__list__button" class="crew-section__list__button" 
+                id="victor-tab" role="tab" aria-controls="victor-tabpanel" aria-label="victor tripulant" aria-selected="false"
+              >
+              </button>
+              <button data-js="crew-section__list__button" class="crew-section__list__button"
+                id="anounesh-tab" role="tab" aria-controls="anounesh-tabpanel" aria-label="anounesh tripulant" aria-selected="false"
+              >
+              </button>
+            </div>
           </div>
 
           <div data-js="crew-section__animation-wrapper">
@@ -353,29 +328,23 @@
           </h2>
 
           <div class="technology-section__inner-flex">
-            <ul data-js="technology-section__list" class="technology-section__list" role="tablist">
-              <li>
-                <button data-js="technology-section__list__button" class="technology-section__list__button technology-section__list__button--active"
-                  id="launch-vehicle-tab" role="tab" aria-controls="launch-vehicle-tabpanel" aria-label="launch vehicle" aria-selected="true"
-                >
-                  1
-                </button>
-              </li>
-              <li>
-                <button data-js="technology-section__list__button" class="technology-section__list__button"
-                  id="spaceport-tab" role="tab" aria-controls="spaceport-tabpanel" aria-label="spaceport" aria-selected="false"
-                >
-                  2
-                </button>
-              </li>
-              <li>
-                <button data-js="technology-section__list__button" class="technology-section__list__button"
-                  id="space-capsule-tab" role="tab" aria-controls="space-capsule-tabpanel" aria-label="space capsule" aria-selected="false"
-                >
-                  3
-                </button>
-              </li>
-            </ul>
+            <div data-js="technology-section__list" class="technology-section__list" role="tablist">
+              <button data-js="technology-section__list__button" class="technology-section__list__button technology-section__list__button--active"
+                id="launch-vehicle-tab" role="tab" aria-controls="launch-vehicle-tabpanel" aria-label="launch vehicle" aria-selected="true"
+              >
+                1
+              </button>
+              <button data-js="technology-section__list__button" class="technology-section__list__button"
+                id="spaceport-tab" role="tab" aria-controls="spaceport-tabpanel" aria-label="spaceport" aria-selected="false"
+              >
+                2
+              </button>
+              <button data-js="technology-section__list__button" class="technology-section__list__button"
+                id="space-capsule-tab" role="tab" aria-controls="space-capsule-tabpanel" aria-label="space capsule" aria-selected="false"
+              >
+                3
+              </button>
+            </div>
 
             <div data-js="technology-section__animation-wrapper" class="technology-section__animation-wrapper is-hidden">
               <p class="technology-section__terminology">the terminology</p>
@@ -448,9 +417,9 @@
           </div>
         </div>
       </section>
-    </main>
 
-    <div data-js="loading-circle" class="loading-circle is-active" id="loading-circle" role="progressbar"></div>
+      <div data-js="loading-circle" class="loading-circle is-active" aria-label="loading bar" id="loading-circle" role="progressbar"></div>
+    </main>
 
     <script src="script.js"></script>
   </body>
