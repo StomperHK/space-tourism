@@ -379,6 +379,7 @@ main > section {
   display: none;
 }
 .crew-section__role {
+  display: block;
   margin-bottom: 2vh;
   color: var(--gray-color);
   font-size: 30px;

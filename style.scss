@@ -491,6 +491,7 @@ main > section {
   }
 
   &__role {
+    display: block;
     margin-bottom: 2vh;
 
     color: var(--gray-color);
