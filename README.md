@@ -5,7 +5,7 @@ This site was made with the design provided by Front-End Mentor (https://www.fro
 ## Site Built With:
 
 - Semantic HTML5 markup
-- CSS custom properties
+- SCSS
 - Flexbox
 - CSS Grid
 - JavaScript
