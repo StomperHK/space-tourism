@@ -391,7 +391,7 @@ main > section {
     justify-content: space-around;
     align-items: flex-start;
 
-    max-width: 1400px;
+    max-width: 1200px;
     width: 100%;
   }
 
@@ -401,11 +401,33 @@ main > section {
     transition: transform 300ms ease-out, opacity 300ms ease-out;
   }
 
+  h2 + &__animation-wrapper {
+    margin-left: 3vw;
+
+    position: relative;
+
+    &::before {
+      content: '';
+
+      display: block;
+
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+
+      border-radius: 50%;
+      box-shadow: 0px 0px 20px 0px rgb(57, 43, 43);
+    }
+  }
+
   &__image {
     display: none;
-    margin-left: 3vw;
     max-width: 300px;
     width: 20vw;
+
+    position: relative;
 
     transition: transform 150ms ease-out;
   }
@@ -435,7 +457,11 @@ main > section {
 
   &__destine {
     display: none;
+    padding: 14px;
     max-width: 35vw;
+
+    background-color: rgba(208, 214, 249, 0.15);
+    border-radius: 8px 8px 4px 4px;
   }
 
   &__text {
@@ -656,6 +682,13 @@ main > section {
   animation: rotate-loading-circle 800ms ease-in-out infinite;
 }
 
+@media (min-height: 1300px) {
+  .home-section, .destination-section {
+    align-items: center;
+    padding-top: 50vh;
+  }
+}
+
 @media (min-height: 940px) {
   .home-section, .destination-section, .technology-section {
     padding-bottom: 15vh
@@ -670,7 +703,7 @@ main > section {
   }
 }
 
-@media (min-width:1580px) and (min-height: 651px) {
+@media (min-width:1580px) and (min-height: 650px) {
   .home-section__text {
     max-width: 650px
   }
@@ -689,7 +722,7 @@ main > section {
 }
 
 @media (max-width: 980px), (max-height: 650px) {  // tablet responsive
-  .title {
+  .title:not(.title-one) {
     align-self: flex-start;
 
     margin: 0px 2vw 4vh 6vw;
@@ -716,7 +749,7 @@ main > section {
     padding-top: 0px;
   }
 
-  main > section, .crew-section {
+  main > section:not(.destination-section) {
     display: block;
 
     padding: calc(6vh + 74px) 0px 0px;
@@ -755,7 +788,7 @@ main > section {
     &__text {
       margin: 0px auto;
       max-width: none;
-      width: 80%;
+      width: 60%;
 
       text-align: center;
     }
@@ -766,67 +799,6 @@ main > section {
       height: 18vw;
 
       font-size: 24px;
-    }
-  }
-
-  .destination-section {
-    background-image:
-      radial-gradient(farthest-corner at center center, transparent 50%, black 95%),
-      url('./src/destination/background-destination-tablet.jpg');
-
-    &__flex {
-      @include custom-scrollbar;
-
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-
-      height: 100%;
-
-      overflow-y: auto;   // overflow bar creation
-      overflow-x: hidden;
-
-      & > div:nth-child(3) {
-        padding: 0px 30px;
-      }
-    }
-
-    &__image {
-      margin: 0px;
-      width: 20vw;
-    }
-
-    &__list {
-      justify-content: center;
-
-      margin: 3.5vh 0px;
-
-      position: static;
-
-      transform: none;
-    }
-
-    &__destine {
-      margin: 0px auto;
-
-      max-width: 90%;
-    }
-
-    &__title {
-      text-align: center;
-    }
-
-    &__text {
-      padding-bottom: 20px;
-
-      text-align: center;
-    }
-
-    &__definitions {
-      justify-content: space-evenly;
-
-      margin: 4vh 0px 70px;   // I'am using 70px because the toolbar of the Opera Android Browser has this very same height
-      max-width: none;
     }
   }
 
@@ -860,13 +832,13 @@ main > section {
     }
 
     &__role {
-      font-size: 24px;;
+      font-size: 24px;
     }
 
     &__text {
       margin: 2vh auto 3.5vh;
       max-width: none;
-      width: 80%;
+      width: 60%;
 
       text-align: center;
     }
@@ -936,6 +908,92 @@ main > section {
       width: 100%;
       max-width: 800px;
     }
+  }
+}
+
+@media (max-width: 920px) , (max-height: 610px) {
+  .title-one {
+    align-self: flex-start;
+
+    margin: 0px 2vw 4vh 6vw;
+
+    position: static;
+
+    font-size: 22px;
+    line-height: 35px;
+  }
+
+  .destination-section {
+    display: block;
+
+    padding: calc(6vh + 74px) 0px 0px;
+  }
+
+  .crew-section {
+    display: block;
+
+    padding: calc(6vh + 74px) 0px 0px;
+  }
+  
+  .destination-section {
+    &__flex {
+      @include custom-scrollbar;
+
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 100%;
+
+      overflow-y: auto;   // overflow bar creation
+      overflow-x: hidden;
+
+      & > div:nth-child(3) {
+        padding: 0px 30px;
+      }
+    }
+
+    &__image {
+      margin: 0px;
+      width: 20vw;
+    }
+
+    &__list {
+      justify-content: center;
+
+      margin: 3.5vh 0px;
+
+      position: static;
+
+      transform: none;
+    }
+
+    &__destine {
+      margin: 0px auto;
+
+      max-width: 90%;
+    }
+
+    &__title {
+      text-align: center;
+    }
+
+    &__text {
+      padding-bottom: 20px;
+
+      text-align: center;
+    }
+
+    &__definitions {
+      justify-content: space-evenly;
+
+      margin: 4vh 0px 70px;   // I'am using 70px because the toolbar of the Opera Android Browser has this very same height
+      max-width: none;
+    }
+  }
+
+  .destination-section__flex {   // avoid that the content get clipped to out of the element
+    justify-content: flex-start;
   }
 }
 
@@ -1075,12 +1133,12 @@ main > section {
   }
 
   main > section, .crew-section {
-    padding-top: calc(4vh + 47px);
+    padding-top: calc(4vh + 47px) !important;
   }
 }
 
 @media (max-height: 650px) {
-  .home-section__flex, .destination-section__flex {   // avoid that the content get clipped to out of the element
+  .home-section__flex {   // avoid that the content get clipped to out of the element
     justify-content: flex-start;
   }
 }
@@ -1097,9 +1155,16 @@ main > section {
 
 
 @media (max-width: 510px) {
+
   .home-section__explore-button {
     width: 36vw;
     height: 36vw;
+  }
+
+  .destination-section {
+    background-image:
+      radial-gradient(farthest-corner at center center, transparent 50%, black 95%),
+      url('./src/destination/background-destination-tablet.jpg');
   }
 
   .crew-section__image {
