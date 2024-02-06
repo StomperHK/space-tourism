@@ -290,6 +290,7 @@ main > section {
   padding: 10vh 15vh;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
 
   position: relative;
 
@@ -864,14 +865,11 @@ main > section {
       @include custom-scrollbar;
 
       flex-direction: column;
+      justify-content: flex-start;
 
       height: 100%;
 
       overflow: auto;
-    }
-
-    &__picture-wrapper {
-      margin-bottom: 30px;
     }
 
     &__inner-flex {
@@ -895,7 +893,7 @@ main > section {
     }
 
     &__vehicle {
-      margin: 0px auto 70px auto;
+      margin: 0px auto 120px auto;
       width: 70%;
 
       h3, p {
@@ -904,14 +902,15 @@ main > section {
     }
 
     &__image {
-      margin: 0px auto;
+      display: block;
+      margin: 0px auto 30px;
       width: 100%;
       max-width: 800px;
     }
   }
 }
 
-@media (max-width: 920px) , (max-height: 610px) {
+@media (max-width: 940px) , (max-height: 610px) {
   .title-one {
     align-self: flex-start;
 
@@ -922,20 +921,12 @@ main > section {
     font-size: 22px;
     line-height: 35px;
   }
-
-  .destination-section {
-    display: block;
-
-    padding: calc(6vh + 74px) 0px 0px;
-  }
-
-  .crew-section {
-    display: block;
-
-    padding: calc(6vh + 74px) 0px 0px;
-  }
   
   .destination-section {
+    display: block;
+
+    padding: calc(6vh + 74px) 0px 0px;
+
     &__flex {
       @include custom-scrollbar;
 
@@ -969,7 +960,7 @@ main > section {
     }
 
     &__destine {
-      margin: 0px auto;
+      margin: 40px auto 120px;
 
       max-width: 90%;
     }
@@ -987,13 +978,19 @@ main > section {
     &__definitions {
       justify-content: space-evenly;
 
-      margin: 4vh 0px 70px;   // I'am using 70px because the toolbar of the Opera Android Browser has this very same height
+      margin: 4vh 0px 0px;   // I'am using 70px because the toolbar of the Opera Android Browser has this very same height
       max-width: none;
     }
   }
 
   .destination-section__flex {   // avoid that the content get clipped to out of the element
     justify-content: flex-start;
+  }
+
+  .crew-section {
+    display: block;
+
+    padding: calc(6vh + 74px) 0px 0px;
   }
 }
 
