@@ -753,7 +753,6 @@ main > section {
   main > section:not(.destination-section) {
     display: block;
 
-    padding: calc(6vh + 74px) 0px 0px;
   }
 
   .home-section {
@@ -761,6 +760,7 @@ main > section {
       radial-gradient(farthest-corner at center center, transparent 50%, black 95%),
       url('./src/home/background-home-tablet.jpg');
     background-position: center 60%;
+    padding: 0px;
 
     &__flex {
       @include custom-scrollbar;
@@ -768,7 +768,7 @@ main > section {
       flex-direction: column;
       justify-content: space-around;
 
-      padding: 0px 20px 100px;  // overflow bar creation
+      padding: calc(6vh + 74px) 20px 100px;  // overflow bar creation
       height: 100%;
 
       overflow: auto;
@@ -808,6 +808,7 @@ main > section {
       radial-gradient(farthest-corner at center center, transparent 50%, black 95%),
       url('./src/crew/background-crew-tablet.jpg');
     background-position: center 70%;
+    padding: 0px;
 
     .title {
       margin-bottom: 16px;
@@ -819,6 +820,7 @@ main > section {
       flex-direction: column;
       align-items: center;
 
+      padding-top: calc(6vh + 74px);
       height: 100%;
 
       overflow: auto;
@@ -861,12 +863,15 @@ main > section {
   }
 
   .technology-section {
+    padding: 0px;
+
     &__flex {
       @include custom-scrollbar;
 
       flex-direction: column;
       justify-content: flex-start;
 
+      padding-top: calc(6vh + 74px);
       height: 100%;
 
       overflow: auto;
@@ -925,7 +930,7 @@ main > section {
   .destination-section {
     display: block;
 
-    padding: calc(6vh + 74px) 0px 0px;
+    padding: 0px;
 
     &__flex {
       @include custom-scrollbar;
@@ -934,6 +939,7 @@ main > section {
       justify-content: space-between;
       align-items: center;
 
+      padding-top: calc(6vh + 74px);
       height: 100%;
 
       overflow-y: auto;   // overflow bar creation
@@ -990,7 +996,7 @@ main > section {
   .crew-section {
     display: block;
 
-    padding: calc(6vh + 74px) 0px 0px;
+    padding: 0px;
   }
 }
 
@@ -1057,6 +1063,7 @@ main > section {
 
       background-color: var(--hamburguer-menu-color-high-opacity);
 
+      -webkit-backdrop-filter: initial;
       backdrop-filter: initial;
 
       transition: transform 200ms ease-in-out;
@@ -1130,7 +1137,11 @@ main > section {
   }
 
   main > section, .crew-section {
-    padding-top: calc(4vh + 47px) !important;
+    padding-top: 0px !important;
+
+    & > div {
+      padding-top: calc(4vh + 47px);
+    }
   }
 }
 
@@ -1216,6 +1227,12 @@ main > section {
 
   .destination-section__image {
     width: 30vw;
+  }
+}
+
+@media (max-width: 420px) and (max-height: 710px) {
+  .destination-section__destine {
+    border-radius: 8px 8px 0px 0px;
   }
 }
 
